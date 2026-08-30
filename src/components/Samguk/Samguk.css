@@ -67,16 +67,12 @@ button, input, textarea {
   flex: none;
 }
 
-.logo-mark {
+.logo-image {
   width: 48px;
   height: 48px;
-  display: grid;
-  place-items: center;
-  font-size: 21px;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(145deg, #e32028 0 32%, #0b6339 33% 63%, #1b3973 64%);
-  border-radius: 50%;
+  display: block;
+  flex: none;
+  object-fit: contain;
 }
 
 .logo strong {
@@ -606,10 +602,9 @@ footer .section-inner {
   gap: 48px;
 }
 
-footer .logo-mark {
+footer .logo-image {
   width: 30px;
   height: 30px;
-  font-size: 12px;
 }
 
 footer .logo strong {
@@ -682,6 +677,16 @@ footer div div {
 
 }
 
+@media (min-width: 681px) and (max-width: 960px) {
+  .hero {
+    min-height: 820px;
+  }
+
+  .hero-content {
+    margin-bottom: 210px;
+  }
+}
+
 @media (max-width:680px) {
   .section-inner, .hero-content {
     width: calc(100% - 32px);
@@ -701,7 +706,7 @@ footer div div {
     font-size: 18px;
   }
 
-  .logo-mark {
+  .logo-image {
     width: 40px;
     height: 40px;
   }

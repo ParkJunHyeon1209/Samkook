@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import ContentSection from "../ContentSection";
-import "./Samkook.css";
+import logoImage from "../../assets/images/Logo-White.png";
+import "./Samguk.css";
 
 const navItems = [
-  "회사소개",
-  "사업분야",
-  "제품소개",
-  "보유장비",
-  "납품실적",
-  "고객지원",
+  ["회사소개", "#contact"],
+  ["사업분야", "#business"],
+  ["주요제품", "/products"],
+  ["보유장비", "#contact"],
+  ["납품실적", "#gallery"],
+  ["고객지원", "#contact"],
+];
+
+const productNavItems = [
+  ["H-BEAM", "/products/h-beam"],
+  ["앵글", "/products/angle"],
+  ["쟌넬", "/products/channel"],
+  ["각종 부자재", "/products/accessories"],
 ];
 
 const businessItems = [
@@ -32,22 +41,26 @@ const businessItems = [
 
 const productItems = [
   [
+    "h-beam",
     "H-BEAM",
     "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=700&q=85",
   ],
   [
+    "angle",
     "앵글",
     "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=700&q=85",
   ],
   [
+    "channel",
     "쟌넬",
     "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=85",
   ],
   [
+    "accessories",
     "각종 부자재",
     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=85",
   ],
-].map(([title, image]) => ({ title, image }));
+].map(([slug, title, image]) => ({ slug, title, image }));
 
 const galleryItems = [
   [
@@ -174,57 +187,63 @@ function InfoIcon({ type, className = "info-icon" }) {
   );
 }
 
-function Logo() {
+export function Logo() {
   return (
-    <a className="logo" href="#top" aria-label="삼국철강 홈">
-      <span className="logo-mark">三</span>
+    <Link className="logo" to="/" aria-label="삼국철강 홈">
+      <img className="logo-image" src={logoImage} alt="" />
       <span>
         <strong>삼국철강(주)</strong>
-        <small>SAMKOOK STEEL</small>
+        <small>SAMGUK STEEL</small>
       </span>
-    </a>
+    </Link>
   );
 }
 
-export default function Samkook() {
+export function SiteHeader({ productNavigation = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const links = productNavigation ? productNavItems : navItems;
 
   return (
+    <header
+      className={`site-header${productNavigation ? " site-header--product" : ""}`}
+    >
+      <div className="header-inner">
+        <Logo />
+        <button
+          className="menu-button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label="메뉴 열기"
+        >
+          ☰
+        </button>
+        <nav className={menuOpen ? "open" : ""}>
+          {links.map(([label, href]) => (
+            <Link
+              className={
+                productNavigation && pathname.startsWith(href) ? "active" : ""
+              }
+              key={label}
+              to={href.startsWith("/") ? href : `/${href}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <a className="header-phone" href="tel:0313513277">
+          <b>031-351-3277</b>
+          <small>평일 08:30 - 17:30</small>
+        </a>
+      </div>
+    </header>
+  );
+}
+
+export default function Samguk() {
+  return (
     <main id="top">
-      <header className="site-header">
-        <div className="header-inner">
-          <Logo />
-          <button
-            className="menu-button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label="메뉴 열기"
-          >
-            ☰
-          </button>
-          <nav className={menuOpen ? "open" : ""}>
-            {navItems.map((item, index) => (
-              <a
-                key={item}
-                href={
-                  index === 1
-                    ? "#business"
-                    : index === 2
-                      ? "#products"
-                      : index === 4
-                        ? "#gallery"
-                        : "#contact"
-                }
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-          <a className="header-phone" href="tel:0310000000">
-            <b>031-000-0000</b>
-            <small>평일 08:30 - 17:30</small>
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="hero">
         <div className="hero-shade" />
@@ -246,7 +265,7 @@ export default function Samkook() {
             <a className="button primary" href="#contact">
               견적 문의하기
             </a>
-            <a className="button ghost" href="tel:0310000000">
+            <a className="button ghost" href="tel:0313513277">
               전화 상담하기
             </a>
           </div>
@@ -277,9 +296,6 @@ export default function Samkook() {
               <small>{item.eyebrow}</small>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              <a href="#contact">
-                자세히 보기 <span>→</span>
-              </a>
             </div>
           </article>
         )}
@@ -291,12 +307,16 @@ export default function Samkook() {
         items={productItems}
         className="products"
         renderItem={(item) => (
-          <article className="product-card" key={item.title}>
+          <Link
+            className="product-card"
+            key={item.title}
+            to={`/products/${item.slug}`}
+          >
             <div className="image-wrap">
               <img src={item.image} alt={item.title} />
             </div>
             <h3>{item.title}</h3>
-          </article>
+          </Link>
         )}
       />
 
@@ -354,7 +374,7 @@ export default function Samkook() {
             <div className="contact-info-item">
               <InfoIcon type="phone" />
               <div>
-                <b>031-XXX-XXXX</b>
+                <b>031-351-3277</b>
                 <span>
                   평일 08:30 - 17:30
                   <em className="contact-closed">(주말 및 공휴일 휴무)</em>
@@ -363,14 +383,12 @@ export default function Samkook() {
             </div>
             <div className="contact-info-item">
               <InfoIcon type="email" />
-              <a href="mailto:samkooksteel@example.com">
-                samkooksteel@example.com
-              </a>
+              <a href="mailto:samguksteel@naver.com">samguksteel@naver.com</a>
             </div>
             <div className="contact-info-item">
               <InfoIcon type="location" />
               <p>
-                경기도 화성시 XXX로 XX
+                경기도 화성시 우정읍 주곡리 161-90
                 <br />
                 삼국철강(주)
               </p>
@@ -387,7 +405,7 @@ export default function Samkook() {
             <a href="#top">이용약관</a>
           </div>
           <p>
-            Copyright &copy; 2026 SAMKOOK STEEL Co., Ltd. All rights reserved.
+            Copyright &copy; 2026 SAMGUK STEEL Co., Ltd. All rights reserved.
           </p>
         </div>
       </footer>
