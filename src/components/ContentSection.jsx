@@ -4,12 +4,14 @@ export default function ContentSection({
   items,
   className = "",
   renderItem,
+  action,
 }) {
   return (
     <section id={id} className={`content-section ${className}`}>
       <div className="section-inner">
-        <header className="section-heading">
+        <header className={`section-heading${action ? " section-heading--with-action" : ""}`}>
           <h2>{title}</h2>
+          {action}
         </header>
         <div className={`${className}__grid`}>
           {items.map((item, index) => renderItem(item, index))}

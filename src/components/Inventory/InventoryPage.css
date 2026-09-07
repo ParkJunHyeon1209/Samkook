@@ -1,0 +1,116 @@
+.inventory-page {
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.inventory-empty {
+  padding: 40px 0;
+  text-align: center;
+  color: #66717d;
+  font-size: 14px;
+}
+
+.inventory-page .product-image-modal__content > img {
+  object-fit: contain;
+}
+
+.inventory-section {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 70px 0 100px;
+}
+
+.inventory-heading {
+  margin-bottom: 38px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #dbe2e8;
+}
+
+.inventory-heading small {
+  color: #1768e5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.inventory-heading h1 {
+  margin: 8px 0 12px;
+  color: #101923;
+  font-size: 38px;
+  letter-spacing: -1.5px;
+}
+
+.inventory-heading p {
+  margin: 0;
+  color: #66717d;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.inventory-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 42px;
+}
+
+.inventory-group-filter {
+  margin-bottom: 18px;
+}
+
+.inventory-filter button {
+  min-width: 150px;
+  padding: 14px 24px;
+  color: #66717d;
+  background: #fff;
+  border: 1px solid #dbe2e8;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.inventory-filter button.active {
+  color: #fff;
+  background: #1768e5;
+  border-color: #1768e5;
+}
+
+.inventory-list-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.inventory-list-heading h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.inventory-list-heading span {
+  color: #87929c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 680px) {
+  .inventory-section {
+    width: calc(100% - 32px);
+    padding: 40px 0 70px;
+  }
+
+  .inventory-heading h1 {
+    font-size: 30px;
+  }
+
+  .inventory-filter {
+    gap: 5px;
+  }
+
+  .inventory-filter button {
+    min-width: 0;
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+}

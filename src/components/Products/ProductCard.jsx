@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function ProductCard({ name, condition, image }) {
+export default function ProductCard({ name, condition, image, images, actionLabel = "이미지 크게 보기" }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  const photos = images?.length ? images : [image];
+  const imageAlt = [name, condition].filter(Boolean).join(" ");
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -17,14 +20,14 @@ export default function ProductCard({ name, condition, image }) {
   return (
     <>
       <article className="product-card-item">
-        <button type="button" onClick={() => setIsOpen(true)}>
+        <button type="button" onClick={() => { setImageIndex(0); setIsOpen(true); }}>
           <div className="product-card-item__image">
-            <img src={image} alt={`${name} ${condition}`} />
-            <span>이미지 크게 보기</span>
+            <img src={photos[0]} alt={imageAlt} />
+            <span>{actionLabel}</span>
           </div>
           <div className="product-card-item__body">
             <strong>{name}</strong>
-            <em>{condition}</em>
+            {condition && <em>{condition}</em>}
           </div>
         </button>
       </article>
@@ -48,11 +51,18 @@ export default function ProductCard({ name, condition, image }) {
             >
               ×
             </button>
-            <img src={image} alt={`${name} ${condition}`} />
+            <img src={photos[imageIndex]} alt={`${imageAlt}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
             <div>
               <span>{condition}</span>
               <strong>{name}</strong>
             </div>
+            {photos.length > 1 && (
+              <div className="product-image-modal__navigation">
+                <button type="button" aria-label="이전 사진" onClick={() => setImageIndex((index) => (index - 1 + photos.length) % photos.length)}>← 이전</button>
+                <span aria-live="polite">{imageIndex + 1} / {photos.length}</span>
+                <button type="button" aria-label="다음 사진" onClick={() => setImageIndex((index) => (index + 1) % photos.length)}>다음 →</button>
+              </div>
+            )}
           </div>
         </div>
       )}

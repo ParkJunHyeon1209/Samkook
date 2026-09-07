@@ -1,89 +1,75 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ContentSection from "../ContentSection";
-import logoImage from "../../assets/images/Logo-White.png";
+import InventoryPreview from "../Inventory/InventoryPreview";
+import ProductCard from "../Products/ProductCard";
+import { accessoryImages, productCategories } from "../../data/products";
+import logoImage from "../../assets/images/Logo-White.webp";
+import yardImage1 from "../../assets/images/gallery/yard-1.webp";
+import yardImage2 from "../../assets/images/gallery/yard-2.webp";
 import "./Samguk.css";
 
 const navItems = [
-  ["회사소개", "#contact"],
+  ["회사소개", "#company"],
   ["사업분야", "#business"],
   ["주요제품", "/products"],
-  ["보유장비", "#contact"],
+  ["보유현황", "/inventory"],
   ["납품실적", "#gallery"],
   ["고객지원", "#contact"],
 ];
 
-const productNavItems = [
-  ["H-BEAM", "/products/h-beam"],
-  ["앵글", "/products/angle"],
-  ["쟌넬", "/products/channel"],
-  ["각종 부자재", "/products/accessories"],
-];
-
 const businessItems = [
   {
-    title: "철강 판매",
+    title: "철강재 판매",
     eyebrow: "STEEL SALES",
     description:
       "H-Beam, 철근, 형강류 등 다양한 철강제품을 합리적인 가격으로 공급합니다.",
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?fm=webp&fit=crop&w=1200&q=85",
   },
   {
-    title: "철강 렌탈",
+    title: "철강재 렌탈",
     eyebrow: "STEEL RENTAL",
     description:
       "필요한 기간만 효율적으로! 가설재, H-Beam 등 다양한 철강 임대 서비스를 제공합니다.",
     image:
-      "https://images.unsplash.com/photo-1518709414768-a88981a4515d?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1518709414768-a88981a4515d?fm=webp&fit=crop&w=1200&q=85",
+  },
+  {
+    title: "철강재 매입",
+    eyebrow: "STEEL PURCHASE",
+    description:
+      "사용하지 않는 H-Beam, 철근, 형강류 등 다양한 철강제품을 신속하고 합리적인 가격으로 매입합니다.",
+    image:
+      "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?fm=webp&fit=crop&w=1200&q=85",
   },
 ];
 
-const productItems = [
-  [
-    "h-beam",
-    "H-BEAM",
-    "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=700&q=85",
-  ],
-  [
-    "angle",
-    "앵글",
-    "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=700&q=85",
-  ],
-  [
-    "channel",
-    "쟌넬",
-    "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=85",
-  ],
-  [
-    "accessories",
-    "각종 부자재",
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=85",
-  ],
-].map(([slug, title, image]) => ({ slug, title, image }));
+const productItems = productCategories.map((category) =>
+  category.slug === "accessories"
+    ? { ...category, image: accessoryImages["복공판"] }
+    : category
+);
 
 const galleryItems = [
   [
     "야적장 전경",
-    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=85",
+    yardImage1,
+    [yardImage1, yardImage2],
   ],
   [
     "출하 / 상차 현장",
-    "https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?auto=format&fit=crop&w=900&q=85",
+    "https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?fm=webp&fit=crop&w=900&q=85",
   ],
   [
     "가설재 임대 현장",
-    "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=900&q=85",
+    "https://images.unsplash.com/photo-1541971875076-8f970d573be6?fm=webp&fit=crop&w=900&q=85",
   ],
   [
-    "H-BEAM 시공 현장",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=85",
+    "H-BEAM 납품 실적",
+    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?fm=webp&fit=crop&w=900&q=85",
   ],
-  [
-    "지개차 작업",
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=85",
-  ],
-].map(([title, image]) => ({ title, image }));
+].map(([title, image, images]) => ({ title, image, images }));
 
 const stats = [
   ["inventory", "보유 재고", "5,000톤+", "다양한 규격의 철강재 보유"],
@@ -199,29 +185,50 @@ export function Logo() {
   );
 }
 
-export function SiteHeader({ productNavigation = false }) {
+function useMobileHeader() {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 680px)").matches,
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 680px)");
+    const updateScreenSize = (event) => setIsMobile(event.matches);
+
+    mediaQuery.addEventListener("change", updateScreenSize);
+    return () => mediaQuery.removeEventListener("change", updateScreenSize);
+  }, []);
+
+  return isMobile;
+}
+
+export function SiteHeader({ staticHeader = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const isMobile = useMobileHeader();
   const { pathname } = useLocation();
-  const links = productNavigation ? productNavItems : navItems;
+  const links = navItems;
 
   return (
     <header
-      className={`site-header${productNavigation ? " site-header--product" : ""}`}
+      className={`site-header${staticHeader ? " site-header--static" : ""}`}
     >
       <div className="header-inner">
         <Logo />
-        <button
-          className="menu-button"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label="메뉴 열기"
-        >
-          ☰
-        </button>
+        {isMobile && (
+          <button
+            className="menu-button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="메뉴 열기"
+          >
+            ☰
+          </button>
+        )}
         <nav className={menuOpen ? "open" : ""}>
           {links.map(([label, href]) => (
             <Link
               className={
-                productNavigation && pathname.startsWith(href) ? "active" : ""
+                href.startsWith("/") && pathname.startsWith(href)
+                  ? "active"
+                  : ""
               }
               key={label}
               to={href.startsWith("/") ? href : `/${href}`}
@@ -231,10 +238,6 @@ export function SiteHeader({ productNavigation = false }) {
             </Link>
           ))}
         </nav>
-        <a className="header-phone" href="tel:0313513277">
-          <b>031-351-3277</b>
-          <small>평일 08:30 - 17:30</small>
-        </a>
       </div>
     </header>
   );
@@ -245,7 +248,7 @@ export default function Samguk() {
     <main id="top">
       <SiteHeader />
 
-      <section className="hero">
+      <section id="company" className="hero">
         <div className="hero-shade" />
         <div className="hero-content">
           <h1>
@@ -304,21 +307,25 @@ export default function Samguk() {
       <ContentSection
         id="products"
         title="주요 제품"
+        action={<Link className="products-view-all" to="/products">전체보기 →</Link>}
         items={productItems}
         className="products"
         renderItem={(item) => (
           <Link
             className="product-card"
             key={item.title}
-            to={`/products/${item.slug}`}
+            to={item.slug === "accessories" ? "/products#accessories" : `/products/${item.slug}`}
           >
             <div className="image-wrap">
               <img src={item.image} alt={item.title} />
+              <span className="card-more">자세히 보기</span>
             </div>
             <h3>{item.title}</h3>
           </Link>
         )}
       />
+
+      <InventoryPreview />
 
       <section className="strengths">
         <div className="section-inner">
@@ -337,21 +344,25 @@ export default function Samguk() {
         </div>
       </section>
 
-      <ContentSection
-        id="gallery"
-        title="납품 및 현장 갤러리"
-        items={galleryItems}
-        className="gallery"
-        renderItem={(item) => (
-          <figure className="gallery-card" key={item.title}>
-            <img src={item.image} alt={item.title} />
-            <figcaption>
-              {item.title}
-              <span>현장 보기 →</span>
-            </figcaption>
-          </figure>
-        )}
-      />
+      <section id="gallery" className="content-section gallery">
+        <div className="section-inner">
+          <header className="section-heading">
+            <h2>납품 및 현장 갤러리</h2>
+          </header>
+          <div className="product-card-list">
+            {galleryItems.map((item, index) => (
+              <ProductCard
+                key={item.title}
+                name={item.title}
+                actionLabel="더보기"
+                images={item.images ?? Array.from({ length: 3 }, (_, offset) =>
+                  galleryItems[(index + offset) % galleryItems.length].image
+                )}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section id="contact" className="contact">
         <div className="section-inner contact-grid">

@@ -1,0 +1,29 @@
+.inventory-preview {
+  background: #fff;
+}
+
+.inventory-preview__groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.inventory-preview__groups .product-card-item > a {
+  display: block;
+}
+
+@media (max-width: 680px) {
+  .inventory-preview__groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .inventory-preview__header {
+    margin-bottom: 28px;
+  }
+
+  .inventory-preview__header .section-heading {
+    margin-bottom: 18px;
+  }
+}
