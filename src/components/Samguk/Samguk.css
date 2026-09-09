@@ -476,21 +476,21 @@ button, input, textarea {
 }
 
 .contact {
-  padding: 64px 0;
+  padding: 24px 0;
   color: #fff;
   background: #061a2c;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.35fr .8fr;
-  gap: 42px;
-  align-items: center;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr) minmax(0, 1.1fr) minmax(0, .8fr);
+  gap: 20px;
+  align-items: start;
 }
 
 .contact h2 {
-  margin: 8px 0 15px;
-  font-size: 27px;
+  margin: 0 0 12px;
+  font-size: 23px;
   line-height: 1.45;
 }
 
@@ -506,6 +506,9 @@ button, input, textarea {
   gap: 8px;
 }
 
+.contact form { position: relative; min-width: 0; }
+.contact input { min-width: 0; }
+
 .contact input, .contact textarea {
   width: 100%;
   padding: 11px 12px;
@@ -517,15 +520,16 @@ button, input, textarea {
 }
 
 .contact textarea {
-  height: 75px;
+  height: 100px;
+  padding-bottom: 42px;
   margin-top: 8px;
   resize: none;
 }
 
-.contact button {
-  float: right;
-  margin-top: -43px;
-  position: relative;
+.contact form button {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
   padding: 12px 22px;
   color: #fff;
   background: var(--blue);
@@ -537,7 +541,7 @@ button, input, textarea {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-left: 28px;
+  padding-left: 20px;
   border-left: 1px solid #284056;
   font-style: normal;
   font-size: 12px;
@@ -571,7 +575,7 @@ button, input, textarea {
 }
 
 .contact address b {
-  font-size: 21px;
+  font-size: 19px;
 }
 
 .contact address span {
@@ -589,12 +593,16 @@ button, input, textarea {
 }
 
 footer {
-  padding: 22px 0;
+  padding: 14px clamp(16px, 8vw, 120px);
+  border-top: 1px solid #284056;
   color: #8998a5;
   background: #03111e;
 }
 
 footer .section-inner {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,9 +627,81 @@ footer p, footer a {
   font-size: 9px;
 }
 
-footer div div {
+footer .footer-links {
   display: flex;
   gap: 18px;
+}
+
+.footer-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.contact-grid .contact-map__heading,
+.contact-grid .contact-map > p,
+.contact-grid .contact-map > a { display: none; }
+.contact-grid .contact-map__canvas { height: 144px; }
+.contact-grid .contact-map__frame { border-radius: 0; border: 1px solid #284056; }
+
+.contact-map {
+  width: 100%;
+  min-width: 0;
+}
+
+.contact-map__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #dce6ef;
+}
+
+.contact-map a, .contact-map p {
+  font-size: 12px;
+}
+
+.contact-map__heading span { font-size: 12px; color: #aabecd; }
+.contact-map__fallback button {
+  padding: 10px 16px;
+  color: #fff;
+  background: #1768e5;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-map__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #102638;
+}
+
+.contact-map__canvas {
+  width: 100%;
+  height: 340px;
+}
+
+.contact-map__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+  text-align: center;
+  color: #dce6ef;
+  font-size: 13px;
+}
+
+.contact-map > p {
+  margin-top: 10px;
 }
 
 @media (max-width:960px) {
@@ -664,8 +744,11 @@ footer div div {
     grid-template-columns: 1fr 1.5fr;
   }
 
+  .contact-grid .contact-map__canvas { height: 180px; }
+  .footer-info { flex-wrap: wrap; gap: 16px 24px; }
+
   .contact address {
-    grid-column: 1/-1;
+    grid-column: 1;
     padding: 20px 0 0;
     border: 0;
     border-top: 1px solid #284056;
@@ -829,7 +912,8 @@ footer div div {
     height: 100px;
   }
 
-  .contact button {
+  .contact form button {
+    position: static;
     float: none;
     width: 100%;
     margin: 8px 0 0;
@@ -843,6 +927,11 @@ footer div div {
     flex-direction: column;
     gap: 24px;
     text-align: center;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    justify-items: center;
   }
 
 }

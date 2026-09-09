@@ -70,7 +70,7 @@ export default function InventoryPage() {
           <span>{selectedCategory.items.length} ITEMS</span>
         </div>
         {selectedCategory.items.length > 0 ? (
-          <ProductCardList products={selectedCategory.items} condition={null} />
+          <ProductCardList products={selectedCategory.items} />
         ) : (
           <p className="inventory-empty">
             {selectedCategory.title} 사진을 준비 중입니다.

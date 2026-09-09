@@ -1,0 +1,51 @@
+.delivery-record-preview {
+  box-sizing: border-box;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: #fff;
+  background: linear-gradient(120deg, #061a2c, #154b76);
+}
+.delivery-record-preview small { color: #90bdff; }
+.delivery-record-preview strong { font-size: 21px; }
+.delivery-record-preview span { font-size: 12px; color: #c9d8e6; }
+.delivery-record-preview b { font-size: 12px; color: #90bdff; }
+.delivery-record-dialog {
+  width: min(1100px, calc(100% - 32px));
+  max-height: 85vh;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  color: #172b3c;
+}
+.delivery-record-dialog::backdrop { background: rgb(0 8 16 / 80%); }
+.delivery-record-content { position: relative; padding: 36px; }
+.delivery-record-content h2 { margin: 0 40px 28px 0; font-size: 24px; }
+.delivery-record-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #eaf1f8;
+  color: #172b3c;
+  font-size: 28px;
+  cursor: pointer;
+}
+.delivery-record-scroll { overflow-x: auto; }
+.delivery-record-scroll table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px; line-height: 1.7; }
+.delivery-record-scroll th, .delivery-record-scroll td { padding: 18px 14px; border: 1px solid #dbe2e8; text-align: center; }
+.delivery-record-scroll thead th { background: #123958; color: white; }
+.delivery-record-scroll tbody th { width: 35%; text-align: left; font-weight: 500; word-break: keep-all; }
+.delivery-record-scroll td { white-space: nowrap; }
+.delivery-record-scroll td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; }
+.delivery-record-scroll tbody tr:nth-child(even) { background: #f4f7fa; }
+@media (max-width: 680px) {
+  .delivery-record-content { padding: 24px 16px; }
+  .delivery-record-content h2 { font-size: 20px; }
+}

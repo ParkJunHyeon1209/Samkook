@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function ProductCard({ name, condition, image, images, actionLabel = "이미지 크게 보기" }) {
+export default function ProductCard({ name, title, specification, image, images, actionLabel = "이미지 크게 보기" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  const photos = images?.length ? images : [image];
-  const imageAlt = [name, condition].filter(Boolean).join(" ");
+  const photos = images?.length ? images : image ? [image] : [];
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -20,14 +19,18 @@ export default function ProductCard({ name, condition, image, images, actionLabe
   return (
     <>
       <article className="product-card-item">
-        <button type="button" onClick={() => { setImageIndex(0); setIsOpen(true); }}>
+        <button type="button" disabled={!photos.length} onClick={() => { setImageIndex(0); setIsOpen(true); }}>
           <div className="product-card-item__image">
-            <img src={photos[0]} alt={imageAlt} />
-            <span>{actionLabel}</span>
+            {photos.length ? (
+              <>
+                <img src={photos[0]} alt={name} />
+                <span>{actionLabel}</span>
+              </>
+            ) : <p className="product-card-item__placeholder">사진 준비 중</p>}
           </div>
           <div className="product-card-item__body">
-            <strong>{name}</strong>
-            {condition && <em>{condition}</em>}
+            <strong>{title ?? name}</strong>
+            {specification && <span className="product-card-item__specification">{specification}</span>}
           </div>
         </button>
       </article>
@@ -51,9 +54,8 @@ export default function ProductCard({ name, condition, image, images, actionLabe
             >
               ×
             </button>
-            <img src={photos[imageIndex]} alt={`${imageAlt}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
+            <img src={photos[imageIndex]} alt={`${name}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
             <div>
-              <span>{condition}</span>
               <strong>{name}</strong>
             </div>
             {photos.length > 1 && (

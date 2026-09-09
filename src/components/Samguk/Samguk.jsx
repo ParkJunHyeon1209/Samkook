@@ -2,11 +2,22 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ContentSection from "../ContentSection";
 import InventoryPreview from "../Inventory/InventoryPreview";
+import ContactMap from "../Map/ContactMap";
 import ProductCard from "../Products/ProductCard";
+import DeliveryRecordCard from "../Products/DeliveryRecordCard";
 import { accessoryImages, productCategories } from "../../data/products";
 import logoImage from "../../assets/images/Logo-White.webp";
 import yardImage1 from "../../assets/images/gallery/yard-1.webp";
 import yardImage2 from "../../assets/images/gallery/yard-2.webp";
+import rentalSiteImage1 from "../../assets/images/gallery/rental-site-1.webp";
+import rentalSiteImage2 from "../../assets/images/gallery/rental-site-2.webp";
+import rentalSiteImage3 from "../../assets/images/gallery/rental-site-3.webp";
+import rentalSiteImage4 from "../../assets/images/gallery/rental-site-4.webp";
+import rentalSiteImage5 from "../../assets/images/gallery/rental-site-5.webp";
+import shipmentImage1 from "../../assets/images/gallery/shipment-1.webp";
+import shipmentImage2 from "../../assets/images/gallery/shipment-2.webp";
+import shipmentImage3 from "../../assets/images/gallery/shipment-3.webp";
+import shipmentImage4 from "../../assets/images/gallery/shipment-4.webp";
 import "./Samguk.css";
 
 const navItems = [
@@ -59,15 +70,13 @@ const galleryItems = [
   ],
   [
     "출하 / 상차 현장",
-    "https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?fm=webp&fit=crop&w=900&q=85",
+    shipmentImage1,
+    [shipmentImage1, shipmentImage2, shipmentImage3, shipmentImage4],
   ],
   [
     "가설재 임대 현장",
-    "https://images.unsplash.com/photo-1541971875076-8f970d573be6?fm=webp&fit=crop&w=900&q=85",
-  ],
-  [
-    "H-BEAM 납품 실적",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?fm=webp&fit=crop&w=900&q=85",
+    rentalSiteImage1,
+    [rentalSiteImage1, rentalSiteImage2, rentalSiteImage3, rentalSiteImage4, rentalSiteImage5],
   ],
 ].map(([title, image, images]) => ({ title, image, images }));
 
@@ -350,16 +359,16 @@ export default function Samguk() {
             <h2>납품 및 현장 갤러리</h2>
           </header>
           <div className="product-card-list">
-            {galleryItems.map((item, index) => (
+            {galleryItems.map((item) => (
               <ProductCard
                 key={item.title}
                 name={item.title}
                 actionLabel="더보기"
-                images={item.images ?? Array.from({ length: 3 }, (_, offset) =>
-                  galleryItems[(index + offset) % galleryItems.length].image
-                )}
+                image={item.image}
+                images={item.images}
               />
             ))}
+            <DeliveryRecordCard />
           </div>
         </div>
       </section>
@@ -405,19 +414,22 @@ export default function Samguk() {
               </p>
             </div>
           </address>
+          <ContactMap />
         </div>
       </section>
 
       <footer>
         <div className="section-inner">
+          <div className="footer-info">
           <Logo />
-          <div>
+          <div className="footer-links">
             <a href="#top">개인정보처리방침</a>
             <a href="#top">이용약관</a>
           </div>
           <p>
             Copyright &copy; 2026 SAMGUK STEEL Co., Ltd. All rights reserved.
           </p>
+          </div>
         </div>
       </footer>
     </main>

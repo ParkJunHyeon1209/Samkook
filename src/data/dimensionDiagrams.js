@@ -13,10 +13,7 @@ const angleDiagram = { src: angle, alt: "앵글 단면의 H, B, t 및 곡률 반
 
 export const dimensionDiagrams = {
   "h-beam-1": hBeamDiagram,
-  "h-beam-2": hBeamDiagram,
-  "h-beam-3": hBeamDiagram,
   "angle-1": angleDiagram,
-  "angle-2": angleDiagram,
   "channel-1": { src: channel, alt: "쟌넬 단면의 H, B, t₁, t₂ 치수 위치", width: 200 },
   "sheet-pile": { src: sheetPile, alt: "쉬트파일 단면의 폭 B, 높이 h, 두께 t와 기준축", width: 400 },
   "hydraulic-jack": { src: hydraulicJack, alt: "유압잭 측면과 체결 홀 간격 A, B, C 도면", width: 560 },

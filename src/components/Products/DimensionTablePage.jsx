@@ -4,7 +4,7 @@ import {
   dimensionTableGroups,
   getDimensionTable,
 } from "../../data/dimensionTables";
-import { getProductCategory } from "../../data/products";
+import { getProductCategory, productDescriptions } from "../../data/products";
 import DimensionTable from "./DimensionTable";
 import "./ProductCatalog.css";
 
@@ -20,6 +20,7 @@ export default function DimensionTablePage() {
   const tables = result ? [result.table] : group.tables;
   const category = getProductCategory(groupSlug);
   const title = result ? result.table.title : group.title;
+  const description = productDescriptions[title] ?? productDescriptions[group.title];
   const sections = tables.flatMap((table) => table.sections);
 
   return (
@@ -31,6 +32,7 @@ export default function DimensionTablePage() {
         </Link>
         <header className="dimension-detail__heading">
           <h1>{title}</h1>
+          {description && <p className="product-description">{description}</p>}
         </header>
         <figure className="dimension-detail__representative">
           <img
