@@ -1,0 +1,27 @@
+.contact .contact-form-error {
+  margin: 0 0 10px;
+  color: #ffb4b4;
+  font-size: 12px;
+}
+.contact [aria-invalid="true"] { border-color: #ff8585; }
+.contact input:focus, .contact textarea:focus { outline: 2px solid #68a5ff; outline-offset: 2px; }
+.contact-confirmation {
+  width: min(400px, calc(100% - 32px));
+  padding: 32px 24px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  color: #172b3c;
+  text-align: center;
+}
+.contact-confirmation::backdrop { background: rgb(0 8 16 / 70%); }
+.contact .contact-confirmation h2 { margin: 0 0 24px; font-size: 21px; }
+.contact-confirmation button {
+  min-width: 100px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: #1768e5;
+  cursor: pointer;
+}

@@ -37,7 +37,7 @@ button, input, textarea {
 }
 
 .section-inner {
-  width: min(1180px, calc(100% - 48px));
+  width: min(1280px, calc(100% - 48px));
   margin: 0 auto;
 }
 
@@ -137,7 +137,7 @@ button, input, textarea {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(1180px, calc(100% - 48px));
+  width: min(1280px, calc(100% - 48px));
   margin: 60px auto 80px;
 }
 
@@ -189,7 +189,7 @@ button, input, textarea {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(1180px, calc(100% - 48px));
+  width: min(1280px, calc(100% - 48px));
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 25px 30px;
@@ -199,6 +199,7 @@ button, input, textarea {
 
 .stat {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   min-height: 72px;
@@ -411,6 +412,7 @@ button, input, textarea {
 }
 
 @media (hover: none) {
+
   .card-more,
   .product-card-item__image span {
     opacity: 1;
@@ -506,8 +508,14 @@ button, input, textarea {
   gap: 8px;
 }
 
-.contact form { position: relative; min-width: 0; }
-.contact input { min-width: 0; }
+.contact form {
+  position: relative;
+  min-width: 0;
+}
+
+.contact input {
+  min-width: 0;
+}
 
 .contact input, .contact textarea {
   width: 100%;
@@ -562,6 +570,13 @@ button, input, textarea {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.contact-info-item .contact-fax-label {
+  flex: 0 0 27px;
+  color: #5f9ff5;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .contact-info-item>div {
@@ -641,10 +656,19 @@ footer .footer-links {
 }
 
 .contact-grid .contact-map__heading,
-.contact-grid .contact-map > p,
-.contact-grid .contact-map > a { display: none; }
-.contact-grid .contact-map__canvas { height: 144px; }
-.contact-grid .contact-map__frame { border-radius: 0; border: 1px solid #284056; }
+.contact-grid .contact-map>p,
+.contact-grid .contact-map>a {
+  display: none;
+}
+
+.contact-grid .contact-map__canvas {
+  height: 144px;
+}
+
+.contact-grid .contact-map__frame {
+  border-radius: 0;
+  border: 1px solid #284056;
+}
 
 .contact-map {
   width: 100%;
@@ -664,7 +688,11 @@ footer .footer-links {
   font-size: 12px;
 }
 
-.contact-map__heading span { font-size: 12px; color: #aabecd; }
+.contact-map__heading span {
+  font-size: 12px;
+  color: #aabecd;
+}
+
 .contact-map__fallback button {
   padding: 10px 16px;
   color: #fff;
@@ -700,7 +728,7 @@ footer .footer-links {
   font-size: 13px;
 }
 
-.contact-map > p {
+.contact-map>p {
   margin-top: 10px;
 }
 
@@ -744,8 +772,14 @@ footer .footer-links {
     grid-template-columns: 1fr 1.5fr;
   }
 
-  .contact-grid .contact-map__canvas { height: 180px; }
-  .footer-info { flex-wrap: wrap; gap: 16px 24px; }
+  .contact-grid .contact-map__canvas {
+    height: 180px;
+  }
+
+  .footer-info {
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
 
   .contact address {
     grid-column: 1;

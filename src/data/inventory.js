@@ -1,6 +1,7 @@
 import deck_plate from "../assets/images/inventory/deck-plate.webp";
 import end_plate from "../assets/images/inventory/end-plate.webp";
 import stiffener from "../assets/images/inventory/stiffener.webp";
+import stiffenerAdditional from "../assets/images/inventory/stiffener-2.webp";
 import splice_plate from "../assets/images/inventory/splice-plate.webp";
 import jack from "../assets/images/inventory/jack.webp";
 import angle_jack from "../assets/images/inventory/angle-jack.webp";
@@ -62,7 +63,7 @@ const accessoryCategories = [
     slug: "small-parts",
     title: "소부자재",
     items: [
-      { id: "steel-plate", name: "철판", image: end_plate, images: [end_plate, splice_plate, stiffener] },
+      { id: "steel-plate", name: "철판", image: end_plate, images: [end_plate, splice_plate, stiffener, stiffenerAdditional] },
     ],
   },
   {

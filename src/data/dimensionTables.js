@@ -18,7 +18,6 @@ export const dimensionTableGroups = [
     tables: [
       { slug: "accessory-1", title: "잭", representativeImage: accessoryImages["잭"], sections: dimensionTableData.jack },
       { slug: "accessory-2", title: "대좌", representativeImage: accessoryImages["대좌"], sections: dimensionTableData.base },
-      { slug: "accessory-3", title: "쉬트파일", representativeImage: accessoryImages["쉬트파일"], sections: dimensionTableData.sheet },
       {
         slug: "accessory-4",
         title: "복공판",

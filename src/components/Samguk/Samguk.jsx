@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ContentSection from "../ContentSection";
+import ContactForm from "../ContactForm";
 import InventoryPreview from "../Inventory/InventoryPreview";
 import ContactMap from "../Map/ContactMap";
 import ProductCard from "../Products/ProductCard";
@@ -378,18 +379,10 @@ export default function Samguk() {
           <div>
             <h2>문의하기</h2>
             <p>
-              철강 판매 및 렌탈에 관한 문의는 아래 연락처로 언제든지 연락주세요.
+              철강 판매 렌탈 및 매입에 관한 문의는 언제든지 연락주세요.
             </p>
           </div>
-          <form onSubmit={(event) => event.preventDefault()}>
-            <div>
-              <input aria-label="회사명" placeholder="회사명" />
-              <input aria-label="담당자" placeholder="담당자" />
-              <input aria-label="연락처" placeholder="연락처" />
-            </div>
-            <textarea aria-label="문의내용" placeholder="문의내용" />
-            <button>문의 접수하기</button>
-          </form>
+          <ContactForm />
           <address>
             <div className="contact-info-item">
               <InfoIcon type="phone" />
@@ -400,6 +393,10 @@ export default function Samguk() {
                   <em className="contact-closed">(주말 및 공휴일 휴무)</em>
                 </span>
               </div>
+            </div>
+            <div className="contact-info-item">
+              <span className="contact-fax-label">FAX</span>
+              <span>031-351-3276</span>
             </div>
             <div className="contact-info-item">
               <InfoIcon type="email" />
