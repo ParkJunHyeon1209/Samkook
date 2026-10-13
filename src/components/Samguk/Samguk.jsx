@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ContentSection from "../ContentSection";
+import LoadingImage from "../LoadingImage";
 import ContactForm from "../ContactForm";
 import InventoryPreview from "../Inventory/InventoryPreview";
 import ContactMap from "../Map/ContactMap";
 import ProductCard from "../Products/ProductCard";
-import DeliveryRecordCard from "../Products/DeliveryRecordCard";
 import { accessoryImages, productCategories } from "../../data/products";
 import logoImage from "../../assets/images/Logo-White.webp";
 import yardImage1 from "../../assets/images/gallery/yard-1.webp";
@@ -26,7 +26,6 @@ const navItems = [
   ["사업분야", "#business"],
   ["주요제품", "/products"],
   ["보유현황", "/inventory"],
-  ["납품실적", "#gallery"],
   ["고객지원", "#contact"],
 ];
 
@@ -35,40 +34,36 @@ const businessItems = [
     title: "철강재 판매",
     eyebrow: "STEEL SALES",
     description:
-      "H-Beam, 철근, 형강류 등 다양한 철강제품을 합리적인 가격으로 공급합니다.",
+      "H-형강, 철근, 형강류 등 다양한 철강제품을 합리적인 가격으로 공급합니다.",
     image:
       "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?fm=webp&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "철강재 렌탈",
-    eyebrow: "STEEL RENTAL",
-    description:
-      "필요한 기간만 효율적으로! 가설재, H-Beam 등 다양한 철강 임대 서비스를 제공합니다.",
-    image:
-      "https://images.unsplash.com/photo-1518709414768-a88981a4515d?fm=webp&fit=crop&w=1200&q=85",
   },
   {
     title: "철강재 매입",
     eyebrow: "STEEL PURCHASE",
     description:
-      "사용하지 않는 H-Beam, 철근, 형강류 등 다양한 철강제품을 신속하고 합리적인 가격으로 매입합니다.",
+      "사용하지 않는 H-형강, 철근, 형강류 등 다양한 철강제품을 신속하고 합리적인 가격으로 매입합니다.",
     image:
       "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?fm=webp&fit=crop&w=1200&q=85",
+  },
+  {
+    title: "철강재 렌탈",
+    eyebrow: "STEEL RENTAL",
+    description:
+      "필요한 기간만 효율적으로! 가설재, H-형강 등 다양한 철강 임대 서비스를 제공합니다.",
+    image:
+      "https://images.unsplash.com/photo-1518709414768-a88981a4515d?fm=webp&fit=crop&w=1200&q=85",
   },
 ];
 
 const productItems = productCategories.map((category) =>
   category.slug === "accessories"
     ? { ...category, image: accessoryImages["복공판"] }
-    : category
+    : category,
 );
 
 const galleryItems = [
-  [
-    "야적장 전경",
-    yardImage1,
-    [yardImage1, yardImage2],
-  ],
+  ["야적장 전경", yardImage1, [yardImage1, yardImage2]],
   [
     "출하 / 상차 현장",
     shipmentImage1,
@@ -77,7 +72,13 @@ const galleryItems = [
   [
     "가설재 임대 현장",
     rentalSiteImage1,
-    [rentalSiteImage1, rentalSiteImage2, rentalSiteImage3, rentalSiteImage4, rentalSiteImage5],
+    [
+      rentalSiteImage1,
+      rentalSiteImage2,
+      rentalSiteImage3,
+      rentalSiteImage4,
+      rentalSiteImage5,
+    ],
   ],
 ].map(([title, image, images]) => ({ title, image, images }));
 
@@ -270,7 +271,7 @@ export default function Samguk() {
           </h1>
           <p className="hero-kicker">Steel &amp; Rental Solution</p>
           <p className="hero-description">
-            철강 판매, 매입 및 렌탈 전문기업 삼국철강(주)는
+            철강 판매, 매입 및 렌탈 전문기업 삼국철강(주)은
             <br />
             고객의 성공을 위한 최고의 파트너가 되겠습니다.
           </p>
@@ -304,7 +305,7 @@ export default function Samguk() {
         className="business"
         renderItem={(item) => (
           <article className="business-card" key={item.title}>
-            <img src={item.image} alt="" />
+            <LoadingImage src={item.image} alt="" />
             <div className="business-copy">
               <small>{item.eyebrow}</small>
               <h3>{item.title}</h3>
@@ -317,17 +318,25 @@ export default function Samguk() {
       <ContentSection
         id="products"
         title="주요 제품"
-        action={<Link className="products-view-all" to="/products">전체보기 →</Link>}
+        action={
+          <Link className="products-view-all" to="/products">
+            전체보기 →
+          </Link>
+        }
         items={productItems}
         className="products"
         renderItem={(item) => (
           <Link
             className="product-card"
             key={item.title}
-            to={item.slug === "accessories" ? "/products#accessories" : `/products/${item.slug}`}
+            to={
+              item.slug === "accessories"
+                ? "/products#accessories"
+                : `/products/${item.slug}`
+            }
           >
             <div className="image-wrap">
-              <img src={item.image} alt={item.title} />
+              <LoadingImage src={item.image} alt={item.title} />
               <span className="card-more">자세히 보기</span>
             </div>
             <h3>{item.title}</h3>
@@ -369,7 +378,6 @@ export default function Samguk() {
                 images={item.images}
               />
             ))}
-            <DeliveryRecordCard />
           </div>
         </div>
       </section>
@@ -378,9 +386,7 @@ export default function Samguk() {
         <div className="section-inner contact-grid">
           <div>
             <h2>문의하기</h2>
-            <p>
-              철강 판매 렌탈 및 매입에 관한 문의는 언제든지 연락주세요.
-            </p>
+            <p>철강 판매 렌탈 및 매입에 관한 문의는 언제든지 연락주세요.</p>
           </div>
           <ContactForm />
           <address>
@@ -418,14 +424,14 @@ export default function Samguk() {
       <footer>
         <div className="section-inner">
           <div className="footer-info">
-          <Logo />
-          <div className="footer-links">
-            <a href="#top">개인정보처리방침</a>
-            <a href="#top">이용약관</a>
-          </div>
-          <p>
-            Copyright &copy; 2026 SAMGUK STEEL Co., Ltd. All rights reserved.
-          </p>
+            <Logo />
+            <div className="footer-links">
+              <a href="#top">개인정보처리방침</a>
+              <a href="#top">이용약관</a>
+            </div>
+            <p>
+              Copyright &copy; 2026 SAMGUK STEEL Co., Ltd. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

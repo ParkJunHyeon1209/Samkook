@@ -6,6 +6,7 @@ import {
 } from "../../data/dimensionTables";
 import { getProductCategory, productDescriptions } from "../../data/products";
 import DimensionTable from "./DimensionTable";
+import LoadingImage from "../LoadingImage";
 import "./ProductCatalog.css";
 
 export default function DimensionTablePage() {
@@ -35,7 +36,7 @@ export default function DimensionTablePage() {
           {description && <p className="product-description">{description}</p>}
         </header>
         <figure className="dimension-detail__representative">
-          <img
+          <LoadingImage
             src={
               result?.table.representativeImage ?? category?.image
             }

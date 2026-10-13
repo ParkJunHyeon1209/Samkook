@@ -24,15 +24,15 @@
 
 .product-list-heading small {
   color: #68a5ff;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 0;
 }
 
 .product-list-heading h1 {
   margin: 7px 0 10px;
-  font-size: 38px;
-  letter-spacing: -1.5px;
+  font-size: 40px;
+  letter-spacing: 0;
 }
 
 .dimension-nav {
@@ -48,7 +48,7 @@
   padding: 13px 20px;
   text-align: center;
   color: #66717d;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   transition: .2s;
   background: #fff;
@@ -75,14 +75,14 @@
 
 .dimension-group__heading h2 {
   margin: 0;
-  font-size: 26px;
+  font-size: 28px;
 }
 
 .dimension-group__heading span {
   color: #87929c;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0;
 }
 
 .dimension-table-grid {
@@ -94,13 +94,14 @@
 .product-description {
   margin: 0 0 24px;
   color: #526170;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.9;
   word-break: keep-all;
   overflow-wrap: break-word;
 }
 
 .dimension-table-card {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -124,13 +125,13 @@
 
 .dimension-table-card strong {
   padding-left: 18px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .dimension-table-card span {
   padding-right: 18px;
   color: #1768e5;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -149,7 +150,7 @@
   display: inline-block;
   margin-bottom: 30px;
   color: #66717d;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -163,7 +164,7 @@
 
 .dimension-detail__heading h1 {
   margin: 7px 0 10px;
-  font-size: 36px;
+  font-size: 38px;
 }
 
 .dimension-detail__sections {
@@ -172,6 +173,8 @@
 }
 
 .dimension-detail__representative {
+  position: relative;
+  min-height: 240px;
   margin: 0 0 64px;
   display: flex;
   flex-direction: column;
@@ -188,7 +191,7 @@
 .dimension-detail__representative figcaption {
   margin-top: 12px;
   color: #66717d;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .dimension-detail__table {
@@ -198,7 +201,7 @@
 
 .dimension-detail__table h2 {
   margin: 0 0 24px;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .product-card-list {
@@ -247,7 +250,7 @@
   height: 100%;
   margin: 0;
   color: #66717d;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .product-card-item__image img {
@@ -274,19 +277,20 @@
 .product-card-item__body small {
   grid-column: 1 / -1;
   color: #1768e5;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .product-card-item__body strong {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .product-card-item__specification {
+  white-space: pre-line;
   grid-column: 1 / -1;
   margin-top: -6px;
   color: #64748b;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.5;
 }
@@ -330,12 +334,12 @@
 
 .product-image-modal__content>div span {
   color: #68a5ff;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .product-image-modal__content>div strong {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .product-image-modal__close {
@@ -350,7 +354,7 @@
   border: 1px solid rgba(255, 255, 255, .35);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 27px;
+  font-size: 29px;
   line-height: 1;
 }
 
@@ -410,7 +414,7 @@
   }
 
   .dimension-detail__heading h1 {
-    font-size: 29px;
+    font-size: 31px;
   }
 
   .dimension-detail__representative {
@@ -426,7 +430,7 @@
   }
 
   .dimension-detail__table h2 {
-    font-size: 19px;
+    font-size: 21px;
   }
 
   .product-list-heading {
@@ -434,7 +438,7 @@
   }
 
   .product-list-heading h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .product-card-list {
@@ -452,6 +456,7 @@
 
 .dimension-table-wrap {
   width: 100%;
+  overflow-x: auto;
 }
 
 .dimension-table-diagram {
@@ -465,7 +470,7 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   font-variant-numeric: tabular-nums;
 }
@@ -474,7 +479,7 @@
   padding: 10px 0;
   text-align: left;
   color: #66717d;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .dimension-data-table th,
@@ -504,13 +509,14 @@
 .dimension-table-note {
   margin: 14px 0 0;
   color: #66717d;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
 }
 
 @media (max-width: 680px) {
   .dimension-data-table {
-    font-size: clamp(9px, 2.3vw, 12px);
+    min-width: 640px;
+    font-size: 14px;
     line-height: 1.4;
   }
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LoadingImage from "../LoadingImage";
 
 export default function ProductCard({ name, title, specification, image, images, actionLabel = "이미지 크게 보기" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function ProductCard({ name, title, specification, image, images,
           <div className="product-card-item__image">
             {photos.length ? (
               <>
-                <img src={photos[0]} alt={name} />
+                <LoadingImage src={photos[0]} alt={name} />
                 <span>{actionLabel}</span>
               </>
             ) : <p className="product-card-item__placeholder">사진 준비 중</p>}
@@ -54,7 +55,7 @@ export default function ProductCard({ name, title, specification, image, images,
             >
               ×
             </button>
-            <img src={photos[imageIndex]} alt={`${name}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
+            <LoadingImage src={photos[imageIndex]} alt={`${name}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
             <div>
               <strong>{name}</strong>
             </div>

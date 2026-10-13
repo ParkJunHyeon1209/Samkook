@@ -3,7 +3,7 @@ export const dimensionTableData = {
   "hbeam": [
     {
       "id": "h-beam-1",
-      "title": "H-BEAM",
+      "title": "H-형강",
       "headers": [
         [
           {

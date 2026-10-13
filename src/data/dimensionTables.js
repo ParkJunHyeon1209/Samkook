@@ -9,7 +9,7 @@ const sectionEntries = (sections) => sections.map((section) => ({
 }));
 
 export const dimensionTableGroups = [
-  { slug: "h-beam", title: "H-BEAM", tables: sectionEntries(dimensionTableData.hbeam) },
+  { slug: "h-beam", title: "H-형강", tables: sectionEntries(dimensionTableData.hbeam) },
   { slug: "angle", title: "앵글", tables: sectionEntries(dimensionTableData.angle) },
   { slug: "channel", title: "쟌넬", tables: sectionEntries(dimensionTableData.channel) },
   {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LoadingImage from "../LoadingImage";
 import { getProductCategory } from "../../data/products";
 
 export default function DimensionTableGallery({ groups }) {
@@ -17,7 +18,7 @@ export default function DimensionTableGallery({ groups }) {
                 key={table.slug}
                 to={group.slug === "accessories" ? `/products/${group.slug}/${table.slug}` : `/products/${group.slug}`}
               >
-                <img src={table.representativeImage ?? getProductCategory(group.slug).image} alt={table.title} />
+                <LoadingImage src={table.representativeImage ?? getProductCategory(group.slug).image} alt={table.title} />
                 <strong>{table.title}</strong>
                 <span>자세히 보기 →</span>
               </Link>

@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -23,7 +21,8 @@ html {
 body {
   margin: 0;
   color: #101923;
-  font-family: 'Pretendard', 'SUIT', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 18px;
   background: #fff;
 }
 
@@ -80,15 +79,15 @@ button, input, textarea {
 
 .logo strong {
   display: block;
-  font-size: 22px;
-  letter-spacing: -1px;
+  font-size: 24px;
+  letter-spacing: 0;
 }
 
 .logo small {
   display: block;
   margin-top: 2px;
-  font-size: 10px;
-  letter-spacing: .8px;
+  font-size: 13px;
+  letter-spacing: 0;
 }
 
 .site-header nav {
@@ -102,7 +101,7 @@ button, input, textarea {
 }
 
 .site-header nav a {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   transition: .2s;
 }
@@ -116,7 +115,7 @@ button, input, textarea {
   border: 0;
   color: #fff;
   background: none;
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .hero {
@@ -144,20 +143,20 @@ button, input, textarea {
 .hero-kicker {
   margin: 7px 0 0;
   color: #fff;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: 0;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 43px;
+  font-size: 45px;
   line-height: 1.3;
-  letter-spacing: -2.5px;
+  letter-spacing: 0;
 }
 
 .hero h1 strong {
-  font-size: 60px;
+  font-size: 62px;
 }
 
 .hero-description {
@@ -173,7 +172,7 @@ button, input, textarea {
 
 .button {
   padding: 14px 24px;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   border: 1px solid rgba(255, 255, 255, .7);
 }
@@ -229,17 +228,17 @@ button, input, textarea {
 
 .stat small {
   color: #b9c5d0;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .stat strong {
   margin: 2px 0;
-  font-size: 23px;
+  font-size: 25px;
 }
 
 .stat p {
   color: #c6cfd8;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .content-section {
@@ -253,8 +252,8 @@ button, input, textarea {
 
 .section-heading h2 {
   margin: 5px 0 0;
-  font-size: 30px;
-  letter-spacing: -1.4px;
+  font-size: 32px;
+  letter-spacing: 0;
 }
 
 .section-heading h2::after {
@@ -306,20 +305,20 @@ button, input, textarea {
 
 .business-copy small {
   color: #70a8fa;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .business-copy h3 {
   margin: 6px 0 12px;
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .business-copy p {
   min-height: 75px;
   margin: 0;
   color: #d6dee5;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
@@ -340,7 +339,7 @@ button, input, textarea {
   padding: 12px 20px;
   border: 1px solid #b9d2f5;
   color: #1768e5;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -364,22 +363,25 @@ button, input, textarea {
 
 .image-wrap {
   position: relative;
-  height: 145px;
+  display: flex;
+  align-items: center;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #ddd;
+  background: #fff;
 }
 
 .product-card img {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
+  clip-path: inset(4.5% 5.8%);
   transition: .4s;
-  filter: saturate(.65);
 }
 
 .product-card h3 {
   margin: 12px 0 0;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .card-more,
@@ -389,7 +391,7 @@ button, input, textarea {
   bottom: 12px;
   padding: 7px 10px;
   color: #fff;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   background: rgba(3, 22, 38, .78);
   opacity: 0;
@@ -429,7 +431,7 @@ button, input, textarea {
 .strengths h2 {
   margin: 0 0 32px;
   text-align: center;
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .strength-grid {
@@ -463,18 +465,22 @@ button, input, textarea {
 .strength-grid h3 {
   margin: 0 0 6px;
   color: #5c9df6;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .strength-grid p {
   margin: 0;
   color: #c0cbd5;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 .gallery {
   background: #f5f7f9;
+}
+
+.gallery .product-card-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .contact {
@@ -485,20 +491,24 @@ button, input, textarea {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr) minmax(0, 1.1fr) minmax(0, .8fr);
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.5fr) minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 20px;
   align-items: start;
 }
 
+.contact-grid > :not(dialog) {
+  min-width: 0;
+}
+
 .contact h2 {
   margin: 0 0 12px;
-  font-size: 23px;
+  font-size: 25px;
   line-height: 1.45;
 }
 
 .contact p {
   color: #aebbc6;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.7;
 }
 
@@ -524,7 +534,7 @@ button, input, textarea {
   background: #0a2135;
   border: 1px solid #2b4255;
   outline: none;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .contact textarea {
@@ -552,7 +562,7 @@ button, input, textarea {
   padding-left: 20px;
   border-left: 1px solid #284056;
   font-style: normal;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .contact-info-item {
@@ -575,11 +585,12 @@ button, input, textarea {
 .contact-info-item .contact-fax-label {
   flex: 0 0 27px;
   color: #5f9ff5;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .contact-info-item>div {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -590,7 +601,7 @@ button, input, textarea {
 }
 
 .contact address b {
-  font-size: 19px;
+  font-size: 21px;
 }
 
 .contact address span {
@@ -605,23 +616,20 @@ button, input, textarea {
 
 .contact address a {
   color: #dce6ef;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 footer {
-  padding: 14px clamp(16px, 8vw, 120px);
+  padding: 12px 0;
   border-top: 1px solid #284056;
   color: #8998a5;
   background: #03111e;
 }
 
 footer .section-inner {
-  width: 100%;
-  max-width: 960px;
+  width: min(1280px, calc(100% - 48px));
   margin-inline: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
 }
 
 footer .logo-image {
@@ -631,20 +639,26 @@ footer .logo-image {
 
 footer .logo strong {
   color: #fff;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 footer .logo small {
-  font-size: 6px;
+  font-size: 9px;
 }
 
 footer p, footer a {
-  font-size: 9px;
+  font-size: 12px;
 }
 
 footer .footer-links {
   display: flex;
+  flex: none;
+  justify-content: flex-end;
   gap: 18px;
+}
+
+footer .footer-links a {
+  white-space: nowrap;
 }
 
 .footer-info {
@@ -653,6 +667,13 @@ footer .footer-links {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
+}
+
+.footer-info > p {
+  flex: none;
+  margin: 0;
+  line-height: 1.7;
+  white-space: nowrap;
 }
 
 .contact-grid .contact-map__heading,
@@ -685,11 +706,11 @@ footer .footer-links {
 }
 
 .contact-map a, .contact-map p {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .contact-map__heading span {
-  font-size: 12px;
+  font-size: 15px;
   color: #aabecd;
 }
 
@@ -725,7 +746,7 @@ footer .footer-links {
   padding: 16px;
   text-align: center;
   color: #dce6ef;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .contact-map>p {
@@ -733,6 +754,22 @@ footer .footer-links {
 }
 
 @media (max-width:960px) {
+
+  .footer-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  footer .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-info > p {
+    max-width: 100%;
+    white-space: normal;
+  }
 
   .site-header nav {
     gap: 18px;
@@ -769,16 +806,12 @@ footer .footer-links {
   }
 
   .contact-grid {
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
 
   .contact-grid .contact-map__canvas {
     height: 180px;
-  }
-
-  .footer-info {
-    flex-wrap: wrap;
-    gap: 16px 24px;
   }
 
   .contact address {
@@ -814,7 +847,7 @@ footer .footer-links {
   }
 
   .logo strong {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .logo-image {
@@ -844,20 +877,21 @@ footer .footer-links {
   }
 
   .hero {
-    min-height: 770px;
+    min-height: 850px;
     align-items: flex-start;
   }
 
   .hero-content {
-    margin-top: 135px;
+    margin-top: 72px;
+    margin-bottom: 250px;
   }
 
   .hero h1 {
-    font-size: 31px;
+    font-size: 33px;
   }
 
   .hero h1 strong {
-    font-size: 43px;
+    font-size: 45px;
   }
 
   .hero-description br {
@@ -886,7 +920,7 @@ footer .footer-links {
   }
 
   .stat strong {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .stat p {
@@ -898,7 +932,7 @@ footer .footer-links {
   }
 
   .section-heading h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .business__grid {
@@ -919,7 +953,11 @@ footer .footer-links {
   }
 
   .image-wrap {
-    height: 130px;
+    aspect-ratio: 1;
+  }
+
+  .gallery .product-card-list {
+    grid-template-columns: 1fr;
   }
 
   .strength-grid {
@@ -928,6 +966,9 @@ footer .footer-links {
 
   .strength-grid article, .strength-grid article:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, .12);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 12px;
   }
 
   .strength-grid article:nth-child(even) {
@@ -958,14 +999,7 @@ footer .footer-links {
   }
 
   footer .section-inner {
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-  }
-
-  .footer-info {
-    flex-direction: column;
-    justify-items: center;
+    width: calc(100% - 32px);
   }
 
 }

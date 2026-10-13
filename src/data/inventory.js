@@ -19,13 +19,12 @@ import h_beam_7 from "../assets/images/inventory/h-beam-7.webp";
 const inventoryCategories = [
   {
     slug: "h-beam",
-    title: "H-BEAM",
+    title: "H-형강",
     items: [
-      { id: "h-beam-1", name: "H-BEAM 300 × 300 × 10 × 15", title: "H-BEAM", specification: "300 × 300 × 10 × 15", image: h_beam_1 },
-      { id: "h-beam-4", name: "H-BEAM 300 × 305 × 15 × 15", title: "H-BEAM", specification: "300 × 305 × 15 × 15", image: h_beam_4 },
-      { id: "h-beam-5", name: "H-BEAM 250 × 250 × 9 × 14", title: "H-BEAM", specification: "250 × 250 × 9 × 14", image: h_beam_5 },
-      { id: "h-beam-6", name: "H-BEAM 440 × 300 × 11 × 18", title: "H-BEAM", specification: "440 × 300 × 11 × 18", image: h_beam_6 },
-      { id: "h-beam-7", name: "H-BEAM 588 × 300 × 12 × 20", title: "H-BEAM", specification: "588 × 300 × 12 × 20", image: h_beam_7 },
+      { id: "h-beam-4", name: "H-형강 300 × 300 × 10 × 15 / 300 × 305 × 15 × 15", title: "H-형강", specification: "300 × 300 × 10 × 15\n300 × 305 × 15 × 15", image: h_beam_4 },
+      { id: "h-beam-5", name: "H-형강 250 × 250 × 9 × 14", title: "H-형강", specification: "250 × 250 × 9 × 14", image: h_beam_5 },
+      { id: "h-beam-6", name: "H-형강 440 × 300 × 11 × 18", title: "H-형강", specification: "440 × 300 × 11 × 18", image: h_beam_6 },
+      { id: "h-beam-7", name: "H-형강 700 × 300 × 13 × 24 / 588 × 300 × 12 × 20", title: "H-형강", specification: "700 × 300 × 13 × 24\n588 × 300 × 12 × 20", image: h_beam_7 },
     ],
   },
   {
@@ -61,9 +60,9 @@ const accessoryCategories = [
   { slug: "base", title: "대좌", items: [{ id: "base", name: "대좌", image: semi_automatic_base }] },
   {
     slug: "small-parts",
-    title: "소부자재",
+    title: "부속자재",
     items: [
-      { id: "steel-plate", name: "철판", image: end_plate, images: [end_plate, splice_plate, stiffener, stiffenerAdditional] },
+      { id: "steel-plate", name: "부속자재", image: end_plate, images: [end_plate, splice_plate, stiffener, stiffenerAdditional] },
     ],
   },
   {
@@ -80,14 +79,14 @@ export const inventoryGroups = [
   {
     slug: "steel",
     title: "형강",
-    description: "H-BEAM · 앵글 · 쟌넬",
+    description: "H-형강 · 앵글 · 쟌넬",
     image: h_beam_1,
     filters: inventoryFilters,
   },
   {
     slug: "accessories",
     title: "각종 부자재",
-    description: "잭 · 대좌 · 소부자재 · etc",
+    description: "잭 · 대좌 · 부속자재 · etc",
     image: deck_plate,
     filters: [
       {

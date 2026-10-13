@@ -4,7 +4,7 @@ const address = "경기도 화성시 우정읍 주곡리 161-90";
 const mapLink = `https://map.kakao.com/link/search/${encodeURIComponent(address)}`;
 let sdkPromise;
 
-function loadMapSdk(key) {
+async function loadMapSdk(key) {
   if (!sdkPromise) {
     sdkPromise = new Promise((resolve, reject) => {
       const script = document.createElement("script");
@@ -26,12 +26,15 @@ function loadMapSdk(key) {
         reject(new Error("Map SDK unavailable"));
       };
       document.head.appendChild(script);
-    }).catch((error) => {
-      sdkPromise = undefined;
-      throw error;
     });
   }
-  return sdkPromise;
+  const pendingSdk = sdkPromise;
+  try {
+    return await pendingSdk;
+  } catch (error) {
+    if (sdkPromise === pendingSdk) sdkPromise = undefined;
+    throw error;
+  }
 }
 
 export default function ContactMap() {
@@ -46,30 +49,36 @@ export default function ContactMap() {
     let observer;
     let marker;
     let infoWindow;
-    loadMapSdk(key).then((maps) => {
-      if (cancelled) return;
-      new maps.services.Geocoder().addressSearch(address, (results, resultStatus) => {
+    async function initializeMap() {
+      try {
+        const maps = await loadMapSdk(key);
         if (cancelled) return;
-        if (resultStatus !== maps.services.Status.OK || !results.length) {
-          setStatus("unavailable");
-          return;
-        }
-        const center = new maps.LatLng(results[0].y, results[0].x);
-        const map = new maps.Map(container.current, { center, level: 3, scrollwheel: false });
-        marker = new maps.Marker({ map, position: center, title: "삼국철강(주)" });
-        infoWindow = new maps.InfoWindow({
-          content: '<div style="padding:10px 16px;color:#172b3c;font-size:14px;white-space:nowrap">삼국철강(주)</div>',
+        new maps.services.Geocoder().addressSearch(address, (results, resultStatus) => {
+          if (cancelled) return;
+          if (resultStatus !== maps.services.Status.OK || !results.length) {
+            setStatus("unavailable");
+            return;
+          }
+          const center = new maps.LatLng(results[0].y, results[0].x);
+          const map = new maps.Map(container.current, { center, level: 3, scrollwheel: false });
+          marker = new maps.Marker({ map, position: center, title: "삼국철강(주)" });
+          infoWindow = new maps.InfoWindow({
+            content: '<div style="padding:10px 16px;color:#172b3c;font-size:14px;white-space:nowrap">삼국철강(주)</div>',
+          });
+          infoWindow.open(map, marker);
+          map.addControl(new maps.ZoomControl(), maps.ControlPosition.RIGHT);
+          observer = new ResizeObserver(() => {
+            map.relayout();
+            map.setCenter(center);
+          });
+          observer.observe(container.current);
+          setStatus("ready");
         });
-        infoWindow.open(map, marker);
-        map.addControl(new maps.ZoomControl(), maps.ControlPosition.RIGHT);
-        observer = new ResizeObserver(() => {
-          map.relayout();
-          map.setCenter(center);
-        });
-        observer.observe(container.current);
-        setStatus("ready");
-      });
-    }).catch(() => { if (!cancelled) setStatus("unavailable"); });
+      } catch {
+        if (!cancelled) setStatus("unavailable");
+      }
+    }
+    initializeMap();
     return () => {
       cancelled = true;
       observer?.disconnect();

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LoadingImage from "../LoadingImage";
 import { inventoryGroups } from "../../data/inventory";
 import "../Products/ProductCatalog.css";
 import "./InventoryPreview.css";
@@ -17,7 +18,7 @@ export default function InventoryPreview() {
             <article className="product-card-item" key={group.slug}>
               <Link to={`/inventory?group=${group.slug}`}>
                 <div className="product-card-item__image">
-                  <img src={group.image} alt={group.title} />
+                  <LoadingImage src={group.image} alt={group.title} />
                   <span>자세히 보기</span>
                 </div>
                 <div className="product-card-item__body">

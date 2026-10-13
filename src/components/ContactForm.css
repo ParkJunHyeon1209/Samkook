@@ -1,7 +1,7 @@
 .contact .contact-form-error {
   margin: 0 0 10px;
   color: #ffb4b4;
-  font-size: 12px;
+  font-size: 15px;
 }
 .contact [aria-invalid="true"] { border-color: #ff8585; }
 .contact input:focus, .contact textarea:focus { outline: 2px solid #68a5ff; outline-offset: 2px; }
@@ -15,7 +15,7 @@
   text-align: center;
 }
 .contact-confirmation::backdrop { background: rgb(0 8 16 / 70%); }
-.contact .contact-confirmation h2 { margin: 0 0 24px; font-size: 21px; }
+.contact .contact-confirmation h2 { margin: 0 0 24px; font-size: 23px; }
 .contact-confirmation button {
   min-width: 100px;
   padding: 12px 24px;
