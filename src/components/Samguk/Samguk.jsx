@@ -22,11 +22,34 @@ import shipmentImage4 from "../../assets/images/gallery/shipment-4.webp";
 import "./Samguk.css";
 
 const navItems = [
-  ["회사소개", "#company"],
-  ["사업분야", "#business"],
-  ["주요제품", "/products"],
-  ["보유현황", "/inventory"],
-  ["고객지원", "#contact"],
+  {
+    label: "회사소개",
+    href: "/#company",
+    subItems: [
+      ["핵심가치", "/#values"],
+      ["찾아오는 길", "/company/directions"],
+    ],
+  },
+  { label: "사업분야", href: "#business" },
+  {
+    label: "주요제품",
+    href: "/#products",
+    subItems: [
+      ["H-형강", "/products/h-beam"],
+      ["앵글", "/products/angle"],
+      ["쟌넬", "/products/channel"],
+      ["각종 부자재", "/products#accessories"],
+    ],
+  },
+  {
+    label: "보유현황",
+    href: "/#inventory",
+    subItems: [
+      ["형강", "/inventory?group=steel"],
+      ["각종 부자재", "/inventory?group=accessories"],
+    ],
+  },
+  { label: "고객지원", href: "#contact" },
 ];
 
 const businessItems = [
@@ -70,7 +93,7 @@ const galleryItems = [
     [shipmentImage1, shipmentImage2, shipmentImage3, shipmentImage4],
   ],
   [
-    "가설재 임대 현장",
+    "주요 시공 현장",
     rentalSiteImage1,
     [
       rentalSiteImage1,
@@ -89,53 +112,53 @@ const stats = [
   ["location", "납품 가능 지역", "전국", "전국 어디든 신속 납품"],
 ];
 
-const strengths = [
-  ["estimate", "빠른 견적", "신속하고 정확한 견적 제공"],
-  ["delivery", "신속 납품", "자체 운송망을 통한 빠른 납품"],
-  ["shield", "렌탈 전문", "체계적인 임대 자재 관리"],
-  ["customer", "고객 맞춤", "현장 상황에 맞춘 솔루션"],
-  ["support", "신뢰와 책임", "정직한 거래와 책임 서비스"],
-];
+// const strengths = [
+//   ["빠른 견적", "신속하고 정확한 견적 제공"],
+//   ["신속 납품", "자체 운송망을 통한 빠른 납품"],
+//   ["렌탈 전문", "체계적인 임대 자재 관리"],
+//   ["고객 맞춤", "현장 상황에 맞춘 솔루션"],
+//   ["신뢰와 책임", "정직한 거래와 책임 서비스"],
+// ];
 
-function StrengthIcon({ type }) {
-  const paths = {
-    estimate: (
-      <>
-        <circle cx="24" cy="27" r="15" />
-        <path d="M24 12V7m-5 0h10M24 27l8-6M12 17l-3-3m27 3 3-3M24 42v-3" />
-      </>
-    ),
-    delivery: (
-      <>
-        <path d="M5 14h24v20H5zM29 21h8l6 7v6H29zM10 14V9h14v5" />
-        <circle cx="13" cy="35" r="4" />
-        <circle cx="36" cy="35" r="4" />
-      </>
-    ),
-    shield: (
-      <path d="M24 5 40 12v11c0 10-6 17-16 21C14 40 8 33 8 23V12zM16 24l6 6 11-13" />
-    ),
-    customer: (
-      <>
-        <circle cx="19" cy="16" r="8" />
-        <circle cx="34" cy="18" r="6" />
-        <path d="M4 41c1-10 6-16 15-16s14 6 15 16M32 27c7 0 11 5 12 13" />
-      </>
-    ),
-    support: (
-      <>
-        <path d="M8 26v-5a16 16 0 0 1 32 0v5M8 24H5v11h7V24zM40 24h3v11h-7V24zM36 37c-2 4-5 5-10 5" />
-        <circle cx="24" cy="42" r="2" />
-      </>
-    ),
-  };
+// function StrengthIcon({ type }) {
+//   const paths = {
+//     estimate: (
+//       <>
+//         <circle cx="24" cy="27" r="15" />
+//         <path d="M24 12V7m-5 0h10M24 27l8-6M12 17l-3-3m27 3 3-3M24 42v-3" />
+//       </>
+//     ),
+//     delivery: (
+//       <>
+//         <path d="M5 14h24v20H5zM29 21h8l6 7v6H29zM10 14V9h14v5" />
+//         <circle cx="13" cy="35" r="4" />
+//         <circle cx="36" cy="35" r="4" />
+//       </>
+//     ),
+//     shield: (
+//       <path d="M24 5 40 12v11c0 10-6 17-16 21C14 40 8 33 8 23V12zM16 24l6 6 11-13" />
+//     ),
+//     customer: (
+//       <>
+//         <circle cx="19" cy="16" r="8" />
+//         <circle cx="34" cy="18" r="6" />
+//         <path d="M4 41c1-10 6-16 15-16s14 6 15 16M32 27c7 0 11 5 12 13" />
+//       </>
+//     ),
+//     support: (
+//       <>
+//         <path d="M8 26v-5a16 16 0 0 1 32 0v5M8 24H5v11h7V24zM40 24h3v11h-7V24zM36 37c-2 4-5 5-10 5" />
+//         <circle cx="24" cy="42" r="2" />
+//       </>
+//     ),
+//   };
 
-  return (
-    <svg className="strength-icon" viewBox="0 0 48 48" aria-hidden="true">
-      {paths[type]}
-    </svg>
-  );
-}
+//   return (
+//     <svg className="strength-icon" viewBox="0 0 48 48" aria-hidden="true">
+//       {paths[type]}
+//     </svg>
+//   );
+// }
 
 function InfoIcon({ type, className = "info-icon" }) {
   const paths = {
@@ -216,8 +239,6 @@ export function SiteHeader({ staticHeader = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useMobileHeader();
   const { pathname } = useLocation();
-  const links = navItems;
-
   return (
     <header
       className={`site-header${staticHeader ? " site-header--static" : ""}`}
@@ -234,19 +255,33 @@ export function SiteHeader({ staticHeader = false }) {
           </button>
         )}
         <nav className={menuOpen ? "open" : ""}>
-          {links.map(([label, href]) => (
-            <Link
-              className={
-                href.startsWith("/") && pathname.startsWith(href)
-                  ? "active"
-                  : ""
-              }
-              key={label}
-              to={href.startsWith("/") ? href : `/${href}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </Link>
+          {navItems.map(({ label, href, subItems }) => (
+            <div className="nav-item" key={label}>
+              <Link
+                className={
+                  href.startsWith("/") && pathname.startsWith(href)
+                    ? "active"
+                    : ""
+                }
+                to={href.startsWith("/") ? href : `/${href}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </Link>
+              {subItems && (
+                <div className="nav-submenu">
+                  {subItems.map(([subLabel, subHref]) => (
+                    <Link
+                      key={subLabel}
+                      to={subHref}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {subLabel}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
       </div>
@@ -346,13 +381,12 @@ export default function Samguk() {
 
       <InventoryPreview />
 
-      <section className="strengths">
+      {/* <section id="values" className="strengths">
         <div className="section-inner">
-          <h2>삼국철강이 선택받는 이유</h2>
+          <h2>삼국철강 핵심가치</h2>
           <div className="strength-grid">
-            {strengths.map(([icon, title, description]) => (
-              <article key={icon}>
-                <StrengthIcon type={icon} />
+            {strengths.map(([title, description]) => (
+              <article key={title}>
                 <div>
                   <h3>{title}</h3>
                   <p>{description}</p>
@@ -361,7 +395,7 @@ export default function Samguk() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="gallery" className="content-section gallery">
         <div className="section-inner">
@@ -393,16 +427,15 @@ export default function Samguk() {
             <div className="contact-info-item">
               <InfoIcon type="phone" />
               <div>
-                <b>031-351-3277</b>
-                <span>
-                  평일 08:30 - 17:30
-                  <em className="contact-closed">(주말 및 공휴일 휴무)</em>
-                </span>
+                <span>031-351-3277</span>
               </div>
             </div>
             <div className="contact-info-item">
               <span className="contact-fax-label">FAX</span>
-              <span>031-351-3276</span>
+              <div>
+                <span>031-351-3276</span>
+                <span>평일 08:30 - 17:30</span>
+              </div>
             </div>
             <div className="contact-info-item">
               <InfoIcon type="email" />

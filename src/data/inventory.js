@@ -10,7 +10,6 @@ import semi_automatic_base from "../assets/images/inventory/semi-automatic-base.
 import channel from "../assets/images/inventory/channel.webp";
 import hwata from "../assets/images/inventory/hwata.webp";
 import angle from "../assets/images/inventory/angle.webp";
-import h_beam_1 from "../assets/images/inventory/h-beam-1.webp";
 import h_beam_4 from "../assets/images/inventory/h-beam-4.webp";
 import h_beam_5 from "../assets/images/inventory/h-beam-5.webp";
 import h_beam_6 from "../assets/images/inventory/h-beam-6.webp";
@@ -80,14 +79,14 @@ export const inventoryGroups = [
     slug: "steel",
     title: "형강",
     description: "H-형강 · 앵글 · 쟌넬",
-    image: h_beam_1,
+    image: h_beam_4,
     filters: inventoryFilters,
   },
   {
     slug: "accessories",
     title: "각종 부자재",
     description: "잭 · 대좌 · 부속자재 · etc",
-    image: deck_plate,
+    image: semi_automatic_base,
     filters: [
       {
         slug: "all",

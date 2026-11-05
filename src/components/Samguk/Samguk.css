@@ -106,7 +106,48 @@ button, input, textarea {
   transition: .2s;
 }
 
-.site-header nav a:hover {
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: #68a5ff;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 25;
+  display: none;
+  min-width: max-content;
+  padding: 6px;
+  transform: translateX(-50%);
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(2, 15, 28, .97);
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+}
+
+.nav-item:hover .nav-submenu,
+.nav-item:focus-within .nav-submenu {
+  display: flex;
+}
+
+.site-header nav .nav-submenu a {
+  padding: 9px 7px;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.site-header nav .nav-submenu a:hover,
+.site-header nav .nav-submenu a:focus-visible {
   color: #68a5ff;
 }
 
@@ -119,7 +160,7 @@ button, input, textarea {
 }
 
 .hero {
-  min-height: 700px;
+  min-height: calc(100vh - 88px);
   position: relative;
   display: flex;
   align-items: center;
@@ -496,7 +537,7 @@ button, input, textarea {
   align-items: start;
 }
 
-.contact-grid > :not(dialog) {
+.contact-grid> :not(dialog) {
   min-width: 0;
 }
 
@@ -669,7 +710,7 @@ footer .footer-links a {
   gap: 28px;
 }
 
-.footer-info > p {
+.footer-info>p {
   flex: none;
   margin: 0;
   line-height: 1.7;
@@ -766,7 +807,7 @@ footer .footer-links a {
     justify-content: center;
   }
 
-  .footer-info > p {
+  .footer-info>p {
     max-width: 100%;
     white-space: normal;
   }
@@ -874,6 +915,38 @@ footer .footer-links a {
 
   .site-header nav.open {
     display: flex;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .nav-item {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .nav-item > a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-submenu {
+    position: static;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 0 0;
+    transform: none;
+    align-items: center;
+    gap: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .site-header nav .nav-submenu a {
+    padding: 7px 8px;
+    color: #b9c9d8;
+    font-size: 14px;
   }
 
   .hero {

@@ -5,6 +5,7 @@ import Samguk from "./components/Samguk/Samguk";
 import ProductCatalog from "./components/Products/ProductCatalog";
 import DimensionTablePage from "./components/Products/DimensionTablePage";
 import InventoryPage from "./components/Inventory/InventoryPage";
+import DirectionsPage from "./components/Directions/DirectionsPage";
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/products/:groupSlug/:tableSlug" element={<DimensionTablePage />} />
         <Route path="/products/:groupSlug" element={<DimensionTablePage />} />
         <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/company/directions" element={<DirectionsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
