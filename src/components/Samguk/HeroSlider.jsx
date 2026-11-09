@@ -30,19 +30,33 @@ const slides = [
 
 export default function HeroSlider({ children }) {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(
+  const [paused] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const [interacting, setInteracting] = useState(false);
+  const [visible, setVisible] = useState(() => !document.hidden);
 
   useEffect(() => {
-    if (paused || interacting) return;
+    const updateVisibility = () => setVisible(!document.hidden);
+    const clearInteraction = () => setInteracting(false);
+    document.addEventListener("visibilitychange", updateVisibility);
+    window.addEventListener("blur", clearInteraction);
+    window.addEventListener("pageshow", updateVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", updateVisibility);
+      window.removeEventListener("blur", clearInteraction);
+      window.removeEventListener("pageshow", updateVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (paused || interacting || !visible) return;
     const timer = window.setInterval(
       () => setActive((index) => (index + 1) % slides.length),
       3500,
     );
     return () => window.clearInterval(timer);
-  }, [paused, interacting, active]);
+  }, [paused, interacting, visible, active]);
 
   const move = (direction) =>
     setActive((index) => (index + direction + slides.length) % slides.length);
@@ -53,9 +67,7 @@ export default function HeroSlider({ children }) {
       className="hero hero-slider"
       aria-label="삼국철강 소개"
       aria-roledescription="캐러셀"
-      onMouseEnter={() => setInteracting(true)}
-      onMouseLeave={() => setInteracting(false)}
-      onFocusCapture={() => setInteracting(true)}
+      onFocusCapture={(event) => setInteracting(event.target.matches(":focus-visible"))}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
           setInteracting(false);
@@ -101,30 +113,15 @@ export default function HeroSlider({ children }) {
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
       </button>
-      <div className="hero-slider__controls">
-        <div className="hero-slider__dots" aria-label="슬라이드 선택">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.image}
-              type="button"
-              aria-label={`${index + 1}번 슬라이드`}
-              aria-pressed={active === index}
-              onClick={() => setActive(index)}
-            />
-          ))}
-        </div>
-        <span className="hero-slider__count">
-          0{active + 1} <span>/ 03</span>
+      <a className="hero-slider__scroll" href="#business" aria-label="아래 사업분야로 이동">
+        <span className="hero-slider__scroll-motion">
+          <span className="hero-slider__scroll-label">SCROLL</span>
+          <svg viewBox="0 0 100 52" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="m13 5 37 25L87 5" />
+            <path d="m5 20 45 29 45-29" />
+          </svg>
         </span>
-        <button
-          className="hero-slider__pause"
-          type="button"
-          onClick={() => setPaused((value) => !value)}
-          aria-label={paused ? "슬라이드 자동 재생" : "슬라이드 일시 정지"}
-        >
-          {paused ? "▶" : "Ⅱ"}
-        </button>
-      </div>
+      </a>
       {children}
     </section>
   );
