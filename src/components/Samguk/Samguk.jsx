@@ -5,6 +5,7 @@ import LoadingImage from "../LoadingImage";
 import ContactForm from "../ContactForm";
 import InventoryPreview from "../Inventory/InventoryPreview";
 import ContactMap from "../Map/ContactMap";
+import HeroSlider from "./HeroSlider";
 import ProductCard from "../Products/ProductCard";
 import { accessoryImages, productCategories } from "../../data/products";
 import logoImage from "../../assets/images/Logo-White.webp";
@@ -105,12 +106,12 @@ const galleryItems = [
   ],
 ].map(([title, image, images]) => ({ title, image, images }));
 
-const stats = [
-  ["inventory", "보유 재고", "5,000톤+", "다양한 규격의 철강재 보유"],
-  ["delivery", "연간 납품 규모", "12,000톤+", "풍부한 경험과 안정적인 공급"],
-  ["partners", "주요 거래처", "300개+", "건설사 및 중공업 협력사"],
-  ["location", "납품 가능 지역", "전국", "전국 어디든 신속 납품"],
-];
+// const stats = [
+//   ["inventory", "보유 재고", "5,000톤+", "다양한 규격의 철강재 보유"],
+//   ["delivery", "연간 납품 규모", "12,000톤+", "풍부한 경험과 안정적인 공급"],
+//   ["partners", "주요 거래처", "300개+", "건설사 및 중공업 협력사"],
+//   ["location", "납품 가능 지역", "전국", "전국 어디든 신속 납품"],
+// ];
 
 // const strengths = [
 //   ["빠른 견적", "신속하고 정확한 견적 제공"],
@@ -294,32 +295,8 @@ export default function Samguk() {
     <main id="top">
       <SiteHeader />
 
-      <section id="company" className="hero">
-        <div className="hero-shade" />
-        <div className="hero-content">
-          <h1>
-            철강 판매와 매입, 그리고 렌탈의
-            <br />
-            새로운 기준
-            <br />
-            <strong>삼국철강(주)</strong>
-          </h1>
-          <p className="hero-kicker">Steel &amp; Rental Solution</p>
-          <p className="hero-description">
-            철강 판매, 매입 및 렌탈 전문기업 삼국철강(주)은
-            <br />
-            고객의 성공을 위한 최고의 파트너가 되겠습니다.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#contact">
-              견적 문의하기
-            </a>
-            <a className="button ghost" href="tel:0313513277">
-              전화 상담하기
-            </a>
-          </div>
-        </div>
-        <div className="stats">
+      <HeroSlider />
+      {/* <div className="stats">
           {stats.map(([icon, label, value, detail]) => (
             <div className="stat" key={label}>
               <InfoIcon type={icon} className="stat-icon" />
@@ -331,7 +308,7 @@ export default function Samguk() {
             </div>
           ))}
         </div>
-      </section>
+      </HeroSlider> */}
 
       <ContentSection
         id="business"
