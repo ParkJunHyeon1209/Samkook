@@ -1,4 +1,88 @@
+import styled from "@emotion/styled";
 import { useEffect, useRef, useState } from "react";
+
+const ContactMapElement = styled("section", { target: "contact-map" })`
+  width: 100%;
+
+  min-width: 0;
+
+  & a,
+  & p {
+    font-size: 15px;
+  }
+
+  &>p {
+    margin-top: 10px;
+  }
+`;
+
+const ContactMapHeading = styled("div", { target: "contact-map__heading" })`
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 12px;
+
+  color: #dce6ef;
+
+  & span {
+    font-size: 15px;
+    color: #aabecd;
+  }
+`;
+
+const ContactMapFrame = styled("div", { target: "contact-map__frame" })`
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #102638;
+`;
+
+const ContactMapCanvas = styled("div", { target: "contact-map__canvas" })`
+  width: 100%;
+
+  height: 340px;
+`;
+
+const ContactMapFallback = styled("div", { target: "contact-map__fallback" })`
+  & button {
+    padding: 10px 16px;
+    color: #fff;
+    background: #1768e5;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 16px;
+
+  text-align: center;
+
+  color: #dce6ef;
+
+  font-size: 16px;
+`;
 
 const address = "경기도 화성시 우정읍 주곡리 161-90";
 let sdkPromise;
@@ -101,19 +185,19 @@ export default function ContactMap() {
   }, [key, attempt]);
 
   return (
-    <section className="contact-map" aria-label="삼국철강 오시는 길">
-      <div className="contact-map__heading">
+    <ContactMapElement  aria-label="삼국철강 오시는 길">
+      <ContactMapHeading>
         <strong>오시는 길</strong>
         <span>지도를 움직이거나 확대해 위치를 확인하세요</span>
-      </div>
-      <div className="contact-map__frame">
-        <div
+      </ContactMapHeading>
+      <ContactMapFrame>
+        <ContactMapCanvas
           ref={container}
-          className="contact-map__canvas"
+
           aria-label="삼국철강 위치 지도"
         />
         {status !== "ready" && (
-          <div className="contact-map__fallback" role="status">
+          <ContactMapFallback  role="status">
             <strong>삼국철강(주)</strong>
             <span>
               {status === "loading"
@@ -131,9 +215,9 @@ export default function ContactMap() {
                 지도 다시 불러오기
               </button>
             )}
-          </div>
+          </ContactMapFallback>
         )}
-      </div>
-    </section>
+      </ContactMapFrame>
+    </ContactMapElement>
   );
 }

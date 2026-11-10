@@ -6,6 +6,7 @@ import ProductCatalog from "./components/Products/ProductCatalog";
 import DimensionTablePage from "./components/Products/DimensionTablePage";
 import InventoryPage from "./components/Inventory/InventoryPage";
 import DirectionsPage from "./components/Directions/DirectionsPage";
+import ValuesPage from "./components/Values/ValuesPage";
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/products/:groupSlug" element={<DimensionTablePage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/company/directions" element={<DirectionsPage />} />
+        <Route path="/company/values" element={<ValuesPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
