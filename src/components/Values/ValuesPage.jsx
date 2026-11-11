@@ -165,19 +165,17 @@ const ValueItemIcon = styled("svg", { target: "value-item__icon" })`
   }
 `;
 
-const ValueItemCopy = styled("div", { target: "value-item__copy" })`
+const ValueItemCopy = styled("div", { target: "value-item__copy" })``;
 
-`;
+// const ValueItemNumber = styled("span", { target: "value-item__number" })`
+//   display: block;
 
-const ValueItemNumber = styled("span", { target: "value-item__number" })`
-  display: block;
+//   font-size: 12px;
 
-  font-size: 12px;
+//   letter-spacing: 2px;
 
-  letter-spacing: 2px;
-
-  color: #96a5bb;
-`;
+//   color: #96a5bb;
+// `;
 
 const ValueItemEnglish = styled("span", { target: "value-item__english" })`
   color: #5974a1;
@@ -216,34 +214,63 @@ const ValuesFooter = styled("footer", { target: "values-footer" })`
 `;
 
 const values = [
-  { english: "QUALITY", title: "품질", x: 64, description: "최고의 품질을 최우선으로 생각하며, 엄격한 품질 관리와 철저한 검수를 통해 믿을 수 있는 철강 제품을 제공하겠습니다." },
-  { english: "TRUST", title: "신뢰", x: 491, description: "고객과의 약속을 소중히 여기며, 정직하고 책임감 있는 자세로 오랜 시간 신뢰받는 기업이 되겠습니다." },
-  { english: "EXPERTISE", title: "전문성", x: 921, description: "풍부한 경험과 전문적인 기술력을 바탕으로 현장에 최적화된 철강 솔루션을 제공하겠습니다." },
-  { english: "CUSTOMER", title: "고객만족", x: 1348, description: "고객의 입장에서 먼저 생각하고, 신속하고 정확한 대응으로 고객 만족을 실현하겠습니다." },
+  {
+    english: "QUALITY",
+    title: "품질",
+    x: 64,
+    description:
+      "최고의 품질을 최우선으로 생각하며, 엄격한 품질 관리와 철저한 검수를 통해 믿을 수 있는 철강 제품을 제공하겠습니다.",
+  },
+  {
+    english: "TRUST",
+    title: "신뢰",
+    x: 491,
+    description:
+      "고객과의 약속을 소중히 여기며, 정직하고 책임감 있는 자세로 오랜 시간 신뢰받는 기업이 되겠습니다.",
+  },
+  {
+    english: "EXPERTISE",
+    title: "전문성",
+    x: 921,
+    description:
+      "풍부한 경험과 전문적인 기술력을 바탕으로 현장에 최적화된 철강 솔루션을 제공하겠습니다.",
+  },
+  {
+    english: "CUSTOMER",
+    title: "고객만족",
+    x: 1348,
+    description:
+      "고객의 입장에서 먼저 생각하고, 신속하고 정확한 대응으로 고객 만족을 실현하겠습니다.",
+  },
 ];
 
 export default function ValuesPage() {
   return (
     <ValuesPageElement>
       <SiteHeader staticHeader />
-      <ValuesSubnav  aria-label="회사소개">
-        <Link to="/company/values" aria-current="page">핵심가치</Link>
+      <ValuesSubnav aria-label="회사소개">
+        <Link to="/company/values" aria-current="page">
+          핵심가치
+        </Link>
         <Link to="/company/directions">찾아오시는 길</Link>
       </ValuesSubnav>
-      <ValuesInner  aria-labelledby="values-title">
+      <ValuesInner aria-labelledby="values-title">
         <ValuesHeading>
           <span>CORE VALUES</span>
           <h1 id="values-title">핵심가치</h1>
           <p>삼국철강이 지켜가는 네 가지 약속</p>
         </ValuesHeading>
         <ValuesGrid>
-          {values.map((value, index) => (
-            <ValueItem  key={value.english}>
-              <ValueItemIcon  viewBox={`${value.x} 235 366 366`} aria-hidden="true">
+          {values.map((value) => (
+            <ValueItem key={value.english}>
+              <ValueItemIcon
+                viewBox={`${value.x} 235 366 366`}
+                aria-hidden="true"
+              >
                 <image href={valueIcons} width="1774" height="887" />
               </ValueItemIcon>
               <ValueItemCopy>
-                <ValueItemNumber>0{index + 1}</ValueItemNumber>
+                {/* <ValueItemNumber>0{index + 1}</ValueItemNumber> */}
                 <h2>{value.title}</h2>
                 <ValueItemEnglish>{value.english}</ValueItemEnglish>
                 <p>{value.description}</p>
