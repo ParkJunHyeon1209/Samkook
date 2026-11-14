@@ -5,7 +5,6 @@ import ContentSection from "../ContentSection";
 import LoadingImage from "../LoadingImage";
 import ContactForm from "../ContactForm";
 import InventoryPreview from "../Inventory/InventoryPreview";
-import ContactMap from "../Map/ContactMap";
 import HeroSlider from "./HeroSlider";
 import ProductCard from "../Products/ProductCard";
 import { accessoryImages, productCategories } from "../../data/products";
@@ -613,7 +612,6 @@ const Contact = styled("section", { target: "contact" })`
     flex-direction: column;
     gap: 8px;
     padding-left: 20px;
-    border-left: 1px solid #284056;
     font-style: normal;
     font-size: 15px;
   }
@@ -642,8 +640,6 @@ const Contact = styled("section", { target: "contact" })`
     & address {
       grid-column: 1;
       padding: 20px 0 0;
-      border: 0;
-      border-top: 1px solid #284056;
     }
   }
 
@@ -676,7 +672,7 @@ const SectionInnerElement = styled("div", { target: "section-inner contact-grid"
 
   display: grid;
 
-  grid-template-columns: minmax(0, .75fr) minmax(0, 1.5fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.25fr);
 
   gap: 20px;
 
@@ -686,19 +682,22 @@ const SectionInnerElement = styled("div", { target: "section-inner contact-grid"
     min-width: 0;
   }
 
-  & .contact-map__heading,
-  & .contact-map>p,
-  & .contact-map>a {
-    display: none;
+  & > section,
+  & > address {
+    position: relative;
+    align-self: stretch;
   }
 
-  & .contact-map__canvas {
-    height: 144px;
-  }
-
-  & .contact-map__frame {
-    border-radius: 0;
-    border: 1px solid #284056;
+  & > section::before,
+  & > address::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: #284056;
+    pointer-events: none;
   }
 
   @media (max-width:960px) {
@@ -706,14 +705,63 @@ const SectionInnerElement = styled("div", { target: "section-inner contact-grid"
 
     gap: 28px;
 
-    & .contact-map__canvas {
-      height: 180px;
+    & > section::before,
+    & > address::before {
+      bottom: auto;
+      width: 100%;
+      height: 1px;
     }
+
   }
 
   @media (max-width:680px) {
     width: calc(100% - 32px);
     grid-template-columns: 1fr;
+  }
+`;
+
+const ContactPeople = styled("section")`
+  padding-left: 20px;
+
+  & h3 {
+    margin: 0 0 18px;
+    font-size: 20px;
+  }
+
+  & ul {
+    display: grid;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & li {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 6px 10px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  & img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  & a {
+    grid-column: 2;
+    color: #dce6ef;
+  }
+
+  & a:hover {
+    color: #68a5ff;
+  }
+
+  @media (max-width:960px) {
+    padding: 20px 0 0;
   }
 `;
 
@@ -1175,6 +1223,21 @@ export default function Samguk() {
             <p>철강 판매 렌탈 및 매입에 관한 문의는 언제든지 연락주세요.</p>
           </div>
           <ContactForm />
+          <ContactPeople aria-labelledby="contact-people-heading">
+            <h3 id="contact-people-heading">담당자</h3>
+            <ul>
+              <li>
+                <img src={logoImage} alt="" />
+                <strong>대표이사 김희찬</strong>
+                <a href="tel:01044466008">010-4446-6008</a>
+              </li>
+              <li>
+                <img src={logoImage} alt="" />
+                <strong>대리 김희환</strong>
+                <a href="tel:01026070181">010-2607-0181</a>
+              </li>
+            </ul>
+          </ContactPeople>
           <address>
             <ContactInfoItem>
               <InfoIcon type="phone" />
@@ -1202,7 +1265,6 @@ export default function Samguk() {
               </p>
             </ContactInfoItem>
           </address>
-          <ContactMap />
         </SectionInnerElement>
       </Contact>
 

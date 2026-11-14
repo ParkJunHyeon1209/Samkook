@@ -341,6 +341,13 @@ const HeroSliderScrollLabel = styled("span", { target: "hero-slider__scroll-labe
 
 const slides = [
   {
+    image: slide3,
+    first: "함께하는 성장,",
+    before: "",
+    emphasis: "삼국철강",
+    after: "이 만들어갑니다",
+  },
+  {
     image: slide1,
     first: "철강의 가치를 넘어,",
     before: "",
@@ -353,13 +360,6 @@ const slides = [
     before: "",
     emphasis: "신뢰를 쌓아갑니다",
     after: "",
-  },
-  {
-    image: slide3,
-    first: "함께하는 성장,",
-    before: "",
-    emphasis: "삼국철강",
-    after: "이 만들어갑니다",
   },
 ];
 
