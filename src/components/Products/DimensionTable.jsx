@@ -78,7 +78,7 @@ const DimensionDataTable = styled("table", { target: "dimension-data-table" })`
     font-weight: 600;
   }
 
-  & tbody tr:nth-child(even) td {
+  & tbody tr:nth-of-type(even) td {
     background: #fafbfd;
   }
 

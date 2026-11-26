@@ -3,7 +3,6 @@ import angleImage from "../assets/images/products/angle.webp";
 import channelImage from "../assets/images/products/channel.webp";
 import jackImage from "../assets/images/products/jack.webp";
 import baseImage from "../assets/images/products/base.webp";
-import sheetPileImage from "../assets/images/products/sheet-pile.webp";
 import deckPlateImage from "../assets/images/products/deck-plate.webp";
 
 import steelPlateImage from "../assets/images/products/steel-plate.webp";
@@ -11,7 +10,6 @@ import steelPlateImage from "../assets/images/products/steel-plate.webp";
 export const accessoryImages = {
   "잭": jackImage,
   "대좌": baseImage,
-  "쉬트파일": sheetPileImage,
   "복공판": deckPlateImage,
   "철판": steelPlateImage,
 };
