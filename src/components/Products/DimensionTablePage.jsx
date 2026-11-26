@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import NotFound from "../NotFound";
 import { SiteHeader } from "../Samguk/Samguk";
 import {
   dimensionTableGroups,
@@ -154,7 +155,7 @@ export default function DimensionTablePage() {
   const result = tableSlug ? getDimensionTable(groupSlug, tableSlug) : null;
 
   if (!group || (tableSlug && !result)) {
-    return <Navigate to="/products" replace />;
+    return <NotFound />;
   }
 
   const tables = result ? [result.table] : group.tables;

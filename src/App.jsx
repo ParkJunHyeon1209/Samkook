@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Samguk from "./components/Samguk/Samguk";
@@ -7,6 +7,7 @@ import DimensionTablePage from "./components/Products/DimensionTablePage";
 import InventoryPage from "./components/Inventory/InventoryPage";
 import DirectionsPage from "./components/Directions/DirectionsPage";
 import ValuesPage from "./components/Values/ValuesPage";
+import NotFound from "./components/NotFound";
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
@@ -37,7 +38,7 @@ export default function App() {
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/company/directions" element={<DirectionsPage />} />
         <Route path="/company/values" element={<ValuesPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
