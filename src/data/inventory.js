@@ -6,7 +6,11 @@ import splice_plate from "../assets/images/inventory/splice-plate.webp";
 import jack from "../assets/images/inventory/jack.webp";
 import angle_jack from "../assets/images/inventory/angle-jack.webp";
 import hydraulic_jack from "../assets/images/inventory/hydraulic-jack.webp";
-import semi_automatic_base from "../assets/images/inventory/semi-automatic-base.webp";
+import baseImage1 from "../assets/images/inventory/base-1.webp";
+import baseImage2 from "../assets/images/inventory/base-2.webp";
+import baseImage3 from "../assets/images/inventory/base-3.webp";
+import steelPlate from "../assets/images/inventory/steel-plate.webp";
+import hBeam350 from "../assets/images/inventory/h-beam-350.webp";
 import channel from "../assets/images/inventory/channel.webp";
 import hwata from "../assets/images/inventory/hwata.webp";
 import angle from "../assets/images/inventory/angle.webp";
@@ -20,10 +24,41 @@ const inventoryCategories = [
     slug: "h-beam",
     title: "H-형강",
     items: [
-      { id: "h-beam-4", name: "H-형강 300 × 300 × 10 × 15 / 300 × 305 × 15 × 15", title: "H-형강", specification: "300 × 300 × 10 × 15\n300 × 305 × 15 × 15", image: h_beam_4 },
-      { id: "h-beam-5", name: "H-형강 250 × 250 × 9 × 14", title: "H-형강", specification: "250 × 250 × 9 × 14", image: h_beam_5 },
-      { id: "h-beam-6", name: "H-형강 440 × 300 × 11 × 18", title: "H-형강", specification: "440 × 300 × 11 × 18", image: h_beam_6 },
-      { id: "h-beam-7", name: "H-형강 700 × 300 × 13 × 24 / 588 × 300 × 12 × 20", title: "H-형강", specification: "700 × 300 × 13 × 24\n588 × 300 × 12 × 20", image: h_beam_7 },
+      {
+        id: "h-beam-5",
+        name: "H-형강 250 × 250 × 9 × 14",
+        title: "H-형강",
+        specification: "250 × 250 × 9 × 14",
+        image: h_beam_5,
+      },
+      {
+        id: "h-beam-4",
+        name: "H-형강 300 × 300 × 10 × 15 / 300 × 305 × 15 × 15",
+        title: "H-형강",
+        specification: "300 × 300 × 10 × 15\n300 × 305 × 15 × 15",
+        image: h_beam_4,
+      },
+      {
+        id: "h-beam-350",
+        name: "H-형강 350 × 350 × 12 × 19",
+        title: "H-형강",
+        specification: "350 × 350 × 12 × 19",
+        image: hBeam350,
+      },
+      {
+        id: "h-beam-6",
+        name: "H-형강 440 × 300 × 11 × 18",
+        title: "H-형강",
+        specification: "440 × 300 × 11 × 18",
+        image: h_beam_6,
+      },
+      {
+        id: "h-beam-7",
+        name: "H-형강 700 × 300 × 13 × 24 / 588 × 300 × 12 × 20",
+        title: "H-형강",
+        specification: "700 × 300 × 13 × 24\n588 × 300 × 12 × 20",
+        image: h_beam_7,
+      },
     ],
   },
   {
@@ -56,13 +91,34 @@ const accessoryCategories = [
       { id: "hydraulic-jack", name: "유압잭", image: hydraulic_jack },
     ],
   },
-  { slug: "base", title: "대좌", items: [{ id: "base", name: "대좌", image: semi_automatic_base }] },
+  {
+    slug: "base",
+    title: "대좌",
+    items: [
+      {
+        id: "base",
+        name: "대좌",
+        image: baseImage1,
+        images: [baseImage1, baseImage2, baseImage3],
+      },
+    ],
+  },
   {
     slug: "small-parts",
     title: "부속자재",
     items: [
-      { id: "steel-plate", name: "부속자재", image: end_plate, images: [end_plate, splice_plate, stiffener, stiffenerAdditional] },
+      {
+        id: "steel-plate",
+        name: "부속자재",
+        image: end_plate,
+        images: [end_plate, splice_plate, stiffener, stiffenerAdditional],
+      },
     ],
+  },
+  {
+    slug: "steel-plate",
+    title: "철판",
+    items: [{ id: "inventory-steel-plate", name: "철판", image: steelPlate }],
   },
   {
     slug: "etc",
@@ -85,8 +141,8 @@ export const inventoryGroups = [
   {
     slug: "accessories",
     title: "각종 부자재",
-    description: "잭 · 대좌 · 부속자재 · etc",
-    image: semi_automatic_base,
+    description: "잭 · 대좌 · 부속자재 · 철판 · etc",
+    image: baseImage1,
     filters: [
       {
         slug: "all",

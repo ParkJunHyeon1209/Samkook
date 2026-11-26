@@ -9,6 +9,8 @@ import HeroSlider from "./HeroSlider";
 import ProductCard from "../Products/ProductCard";
 import { accessoryImages, productCategories } from "../../data/products";
 import logoImage from "../../assets/images/Logo-White.webp";
+import steelPurchaseImage from "../../assets/images/business/steel-purchase.webp";
+import steelRentalImage from "../../assets/images/business/steel-rental.webp";
 import yardImage1 from "../../assets/images/gallery/yard-1.webp";
 import yardImage2 from "../../assets/images/gallery/yard-2.webp";
 import rentalSiteImage1 from "../../assets/images/gallery/rental-site-1.webp";
@@ -43,7 +45,7 @@ const LogoElement = styled(Link, { target: "logo" })`
     letter-spacing: 0;
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     & strong {
       font-size: 20px;
     }
@@ -61,7 +63,7 @@ const LogoImage = styled("img", { target: "logo-image" })`
 
   object-fit: contain;
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     width: 40px;
     height: 40px;
   }
@@ -76,7 +78,7 @@ const SiteHeaderElement = styled("header", { target: "site-header" })`
 
   color: #fff;
 
-  background: rgba(2, 15, 28, .97);
+  background: rgba(2, 15, 28, 0.97);
 
   position: sticky;
 
@@ -88,7 +90,7 @@ const SiteHeaderElement = styled("header", { target: "site-header" })`
 
   right: 0;
 
-  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 
   & nav {
     display: flex;
@@ -103,7 +105,7 @@ const SiteHeaderElement = styled("header", { target: "site-header" })`
   & nav a {
     font-size: 17px;
     font-weight: 600;
-    transition: .2s;
+    transition: 0.2s;
   }
 
   & nav a:hover,
@@ -123,13 +125,13 @@ const SiteHeaderElement = styled("header", { target: "site-header" })`
     color: #68a5ff;
   }
 
-  @media (max-width:960px) {
+  @media (max-width: 960px) {
     & nav {
       gap: 18px;
     }
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     height: 72px;
 
     & nav {
@@ -174,7 +176,7 @@ const HeaderInner = styled("div", { target: "header-inner" })`
 
   gap: 52px;
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     width: calc(100% - 32px);
   }
 `;
@@ -190,7 +192,7 @@ const MenuButton = styled("button", { target: "menu-button" })`
 
   font-size: 27px;
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     display: block;
   }
 `;
@@ -209,12 +211,12 @@ const NavItem = styled("div", { target: "nav-item" })`
     display: flex;
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     height: auto;
 
     flex-direction: column;
 
-    &>a {
+    & > a {
       width: 100%;
       text-align: center;
     }
@@ -242,13 +244,13 @@ const NavSubmenu = styled("div", { target: "nav-submenu" })`
 
   gap: 2px;
 
-  background: rgba(2, 15, 28, .97);
+  background: rgba(2, 15, 28, 0.97);
 
-  border: 1px solid rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
-  box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     position: static;
     display: flex;
     width: 100%;
@@ -279,14 +281,14 @@ const BusinessCard = styled("article", { target: "business-card" })`
     height: 100%;
     position: absolute;
     object-fit: cover;
-    transition: .45s;
+    transition: 0.45s;
   }
 
   &:hover img {
     transform: scale(1.05);
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     min-height: 295px;
   }
 `;
@@ -304,7 +306,11 @@ const BusinessCopy = styled("div", { target: "business-copy" })`
 
   color: #fff;
 
-  background: linear-gradient(90deg, rgba(3, 26, 46, .98) 80%, rgba(3, 26, 46, .1));
+  background: linear-gradient(
+    90deg,
+    rgba(3, 26, 46, 0.98) 80%,
+    rgba(3, 26, 46, 0.1)
+  );
 
   & small {
     color: #70a8fa;
@@ -325,16 +331,14 @@ const BusinessCopy = styled("div", { target: "business-copy" })`
     line-height: 1.65;
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     min-height: 295px;
     width: 67%;
     padding: 30px 22px;
   }
 `;
 
-const Products = styled(ContentSection, { target: "products" })`
-
-`;
+const Products = styled(ContentSection, { target: "products" })``;
 
 const ProductsViewAll = styled(Link, { target: "products-view-all" })`
   position: absolute;
@@ -379,7 +383,7 @@ const ProductCardElement = styled(Link, { target: "product-card" })`
     height: auto;
     object-fit: contain;
     clip-path: inset(4.5% 5.8%);
-    transition: .4s;
+    transition: 0.4s;
   }
 
   & h3 {
@@ -412,7 +416,7 @@ const ImageWrap = styled("div", { target: "image-wrap" })`
 
   background: #fff;
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     aspect-ratio: 1;
   }
 `;
@@ -432,7 +436,7 @@ const CardMore = styled("span", { target: "card-more" })`
 
   font-weight: 700;
 
-  background: rgba(3, 22, 38, .78);
+  background: rgba(3, 22, 38, 0.78);
 
   opacity: 0;
 
@@ -440,7 +444,9 @@ const CardMore = styled("span", { target: "card-more" })`
 
   pointer-events: none;
 
-  transition: opacity .2s, transform .2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 
   @media (hover: none) {
     opacity: 1;
@@ -448,7 +454,9 @@ const CardMore = styled("span", { target: "card-more" })`
   }
 `;
 
-const ContentSectionElement = styled("section", { target: "content-section gallery" })`
+const ContentSectionElement = styled("section", {
+  target: "content-section gallery",
+})`
   padding: 36px 0;
 
   background: #f5f7f9;
@@ -457,7 +465,7 @@ const ContentSectionElement = styled("section", { target: "content-section galle
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     padding: 55px 0;
 
     & .product-card-list {
@@ -471,7 +479,7 @@ const SectionInner = styled("div", { target: "section-inner" })`
 
   margin: 0 auto;
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     width: calc(100% - 32px);
   }
 `;
@@ -488,7 +496,7 @@ const SectionHeading = styled("header", { target: "section-heading" })`
   }
 
   & h2::after {
-    content: '';
+    content: "";
     display: block;
     width: 32px;
     height: 2px;
@@ -500,7 +508,7 @@ const SectionHeading = styled("header", { target: "section-heading" })`
     position: relative;
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     & h2 {
       font-size: 28px;
     }
@@ -536,7 +544,7 @@ const Contact = styled("section", { target: "contact" })`
 
   & input:focus,
   & textarea:focus {
-    outline: 2px solid #68a5ff;
+    outline: 1px solid #68a5ff;
     outline-offset: 2px;
   }
 
@@ -563,7 +571,7 @@ const Contact = styled("section", { target: "contact" })`
     line-height: 1.7;
   }
 
-  & form>div {
+  & form > div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
@@ -590,7 +598,7 @@ const Contact = styled("section", { target: "contact" })`
   }
 
   & textarea {
-    height: 100px;
+    height: 114.5px;
     padding-bottom: 42px;
     margin-top: 8px;
     resize: none;
@@ -636,15 +644,15 @@ const Contact = styled("section", { target: "contact" })`
     overflow-wrap: anywhere;
   }
 
-  @media (max-width:960px) {
+  @media (max-width: 960px) {
     & address {
       grid-column: 1;
       padding: 20px 0 0;
     }
   }
 
-  @media (max-width:680px) {
-    & form>div {
+  @media (max-width: 680px) {
+    & form > div {
       grid-template-columns: 1fr;
     }
 
@@ -665,20 +673,24 @@ const Contact = styled("section", { target: "contact" })`
   }
 `;
 
-const SectionInnerElement = styled("div", { target: "section-inner contact-grid" })`
+const SectionInnerElement = styled("div", {
+  target: "section-inner contact-grid",
+})`
   width: min(1280px, calc(100% - 48px));
 
   margin: 0 auto;
 
   display: grid;
 
-  grid-template-columns: minmax(0, .75fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.25fr);
+  grid-template-columns:
+    minmax(0, 0.75fr) minmax(0, 1.5fr) minmax(0, 1fr)
+    minmax(0, 1.25fr);
 
   gap: 20px;
 
   align-items: start;
 
-  &> :not(dialog) {
+  & > :not(dialog) {
     min-width: 0;
   }
 
@@ -700,7 +712,7 @@ const SectionInnerElement = styled("div", { target: "section-inner contact-grid"
     pointer-events: none;
   }
 
-  @media (max-width:960px) {
+  @media (max-width: 960px) {
     grid-template-columns: minmax(0, 1fr);
 
     gap: 28px;
@@ -711,10 +723,9 @@ const SectionInnerElement = styled("div", { target: "section-inner contact-grid"
       width: 100%;
       height: 1px;
     }
-
   }
 
-  @media (max-width:680px) {
+  @media (max-width: 680px) {
     width: calc(100% - 32px);
     grid-template-columns: 1fr;
   }
@@ -760,7 +771,7 @@ const ContactPeople = styled("section")`
     color: #68a5ff;
   }
 
-  @media (max-width:960px) {
+  @media (max-width: 960px) {
     padding: 20px 0 0;
   }
 `;
@@ -793,11 +804,11 @@ const ContactInfoItem = styled("div", { target: "contact-info-item" })`
     font-weight: 700;
   }
 
-  &:has(.contact-fax-label)>div {
+  &:has(.contact-fax-label) > div {
     line-height: 27px;
   }
 
-  &>div {
+  & > div {
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -805,9 +816,7 @@ const ContactInfoItem = styled("div", { target: "contact-info-item" })`
   }
 `;
 
-const ContactFaxLabel = styled("span", { target: "contact-fax-label" })`
-
-`;
+const ContactFaxLabel = styled("span", { target: "contact-fax-label" })``;
 
 const FooterInfo = styled("div", { target: "footer-info" })`
   width: 100%;
@@ -820,29 +829,25 @@ const FooterInfo = styled("div", { target: "footer-info" })`
 
   gap: 28px;
 
-  &>p {
+  & > p {
     flex: none;
     margin: 0;
     line-height: 1.7;
     white-space: nowrap;
   }
 
-  @media (max-width:960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
 
     gap: 10px;
 
     text-align: center;
 
-    &>p {
+    & > p {
       max-width: 100%;
       white-space: normal;
     }
   }
-`;
-
-const FooterLinks = styled("div", { target: "footer-links" })`
-
 `;
 
 const navItems = [
@@ -890,16 +895,14 @@ const businessItems = [
     eyebrow: "STEEL PURCHASE",
     description:
       "사용하지 않는 H-형강, 철근, 형강류 등 다양한 철강제품을 신속하고 합리적인 가격으로 매입합니다.",
-    image:
-      "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?fm=webp&fit=crop&w=1200&q=85",
+    image: steelPurchaseImage,
   },
   {
     title: "철강재 렌탈",
     eyebrow: "STEEL RENTAL",
     description:
       "필요한 기간만 효율적으로! 가설재, H-형강 등 다양한 철강 임대 서비스를 제공합니다.",
-    image:
-      "https://images.unsplash.com/photo-1518709414768-a88981a4515d?fm=webp&fit=crop&w=1200&q=85",
+    image: steelRentalImage,
   },
 ];
 
@@ -928,61 +931,6 @@ const galleryItems = [
     ],
   ],
 ].map(([title, image, images]) => ({ title, image, images }));
-
-// const stats = [
-//   ["inventory", "보유 재고", "5,000톤+", "다양한 규격의 철강재 보유"],
-//   ["delivery", "연간 납품 규모", "12,000톤+", "풍부한 경험과 안정적인 공급"],
-//   ["partners", "주요 거래처", "300개+", "건설사 및 중공업 협력사"],
-//   ["location", "납품 가능 지역", "전국", "전국 어디든 신속 납품"],
-// ];
-
-// const strengths = [
-//   ["빠른 견적", "신속하고 정확한 견적 제공"],
-//   ["신속 납품", "자체 운송망을 통한 빠른 납품"],
-//   ["렌탈 전문", "체계적인 임대 자재 관리"],
-//   ["고객 맞춤", "현장 상황에 맞춘 솔루션"],
-//   ["신뢰와 책임", "정직한 거래와 책임 서비스"],
-// ];
-
-// function StrengthIcon({ type }) {
-//   const paths = {
-//     estimate: (
-//       <>
-//         <circle cx="24" cy="27" r="15" />
-//         <path d="M24 12V7m-5 0h10M24 27l8-6M12 17l-3-3m27 3 3-3M24 42v-3" />
-//       </>
-//     ),
-//     delivery: (
-//       <>
-//         <path d="M5 14h24v20H5zM29 21h8l6 7v6H29zM10 14V9h14v5" />
-//         <circle cx="13" cy="35" r="4" />
-//         <circle cx="36" cy="35" r="4" />
-//       </>
-//     ),
-//     shield: (
-//       <path d="M24 5 40 12v11c0 10-6 17-16 21C14 40 8 33 8 23V12zM16 24l6 6 11-13" />
-//     ),
-//     customer: (
-//       <>
-//         <circle cx="19" cy="16" r="8" />
-//         <circle cx="34" cy="18" r="6" />
-//         <path d="M4 41c1-10 6-16 15-16s14 6 15 16M32 27c7 0 11 5 12 13" />
-//       </>
-//     ),
-//     support: (
-//       <>
-//         <path d="M8 26v-5a16 16 0 0 1 32 0v5M8 24H5v11h7V24zM40 24h3v11h-7V24zM36 37c-2 4-5 5-10 5" />
-//         <circle cx="24" cy="42" r="2" />
-//       </>
-//     ),
-//   };
-
-//   return (
-//     <svg className="strength-icon" viewBox="0 0 48 48" aria-hidden="true">
-//       {paths[type]}
-//     </svg>
-//   );
-// }
 
 function InfoIcon({ type, className = "info-icon" }) {
   const paths = {
@@ -1033,8 +981,8 @@ function InfoIcon({ type, className = "info-icon" }) {
 
 export function Logo() {
   return (
-    <LogoElement  to="/" aria-label="삼국철강 홈">
-      <LogoImage  src={logoImage} alt="" />
+    <LogoElement to="/" aria-label="삼국철강 홈">
+      <LogoImage src={logoImage} alt="" />
       <span>
         <strong>삼국철강(주)</strong>
         <small>SAMGUK STEEL</small>
@@ -1071,7 +1019,6 @@ export function SiteHeader({ staticHeader = false }) {
         <Logo />
         {isMobile && (
           <MenuButton
-
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="메뉴 열기"
           >
@@ -1080,7 +1027,7 @@ export function SiteHeader({ staticHeader = false }) {
         )}
         <nav className={menuOpen ? "open" : ""}>
           {navItems.map(({ label, href, subItems }) => (
-            <NavItem  key={label}>
+            <NavItem key={label}>
               <Link
                 className={
                   href.startsWith("/") && pathname.startsWith(href)
@@ -1119,27 +1066,13 @@ export default function Samguk() {
       <SiteHeader />
 
       <HeroSlider />
-      {/* <div className="stats">
-          {stats.map(([icon, label, value, detail]) => (
-            <div className="stat" key={label}>
-              <InfoIcon type={icon} className="stat-icon" />
-              <div>
-                <small>{label}</small>
-                <strong>{value}</strong>
-                <p>{detail}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </HeroSlider> */}
 
       <Business
         id="business"
         title="사업분야"
         items={businessItems}
-
         renderItem={(item) => (
-          <BusinessCard  key={item.title}>
+          <BusinessCard key={item.title}>
             <LoadingImage src={item.image} alt="" />
             <BusinessCopy>
               <small>{item.eyebrow}</small>
@@ -1153,16 +1086,10 @@ export default function Samguk() {
       <Products
         id="products"
         title="주요 제품"
-        action={
-          <ProductsViewAll  to="/products">
-            전체보기 →
-          </ProductsViewAll>
-        }
+        action={<ProductsViewAll to="/products">전체보기 →</ProductsViewAll>}
         items={productItems}
-
         renderItem={(item) => (
           <ProductCardElement
-
             key={item.title}
             to={
               item.slug === "accessories"
@@ -1181,23 +1108,7 @@ export default function Samguk() {
 
       <InventoryPreview />
 
-      {/* <section id="values" className="strengths">
-        <div className="section-inner">
-          <h2>삼국철강 핵심가치</h2>
-          <div className="strength-grid">
-            {strengths.map(([title, description]) => (
-              <article key={title}>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      <ContentSectionElement id="gallery" >
+      <ContentSectionElement id="gallery">
         <SectionInner>
           <SectionHeading>
             <h2>납품 및 현장 갤러리</h2>
@@ -1216,7 +1127,7 @@ export default function Samguk() {
         </SectionInner>
       </ContentSectionElement>
 
-      <Contact id="contact" >
+      <Contact id="contact">
         <SectionInnerElement>
           <div>
             <h2>문의하기</h2>
@@ -1272,10 +1183,7 @@ export default function Samguk() {
         <SectionInner>
           <FooterInfo>
             <Logo />
-            <FooterLinks>
-              <a href="#top">개인정보처리방침</a>
-              <a href="#top">이용약관</a>
-            </FooterLinks>
+
             <p>
               Copyright &copy; 2026 SAMGUK STEEL Co., Ltd. All rights reserved.
             </p>

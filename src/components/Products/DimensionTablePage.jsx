@@ -93,6 +93,10 @@ const DimensionDetailRepresentative = styled("figure", { target: "dimension-deta
     object-fit: contain;
   }
 
+  &[data-compact="true"] > img {
+    width: min(100% - 48px, 480px);
+  }
+
   & figcaption {
     margin-top: 12px;
     color: #66717d;
@@ -101,6 +105,26 @@ const DimensionDetailRepresentative = styled("figure", { target: "dimension-deta
 
   @media (max-width: 680px) {
     margin-bottom: 40px;
+  }
+`;
+
+const RepresentativeImages = styled("div")`
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & > div {
+    position: relative;
+    min-width: 0;
+    flex: 1 1 0;
+    aspect-ratio: 1080 / 1456;
+  }
+
+  & > div > img {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -138,6 +162,8 @@ export default function DimensionTablePage() {
   const title = result ? result.table.title : group.title;
   const description = productDescriptions[title] ?? productDescriptions[group.title];
   const sections = tables.flatMap((table) => table.sections);
+  const representativeImage = result?.table.representativeImage ?? category?.image;
+  const additionalImages = result?.table.additionalImages;
 
   return (
     <DimensionDetailPage>
@@ -150,13 +176,19 @@ export default function DimensionTablePage() {
           <h1>{title}</h1>
           {description && <ProductDescription>{description}</ProductDescription>}
         </DimensionDetailHeading>
-        <DimensionDetailRepresentative>
-          <LoadingImage
-            src={
-              result?.table.representativeImage ?? category?.image
-            }
-            alt={`${title} 대표사진`}
-          />
+        <DimensionDetailRepresentative data-compact={result?.table.slug === "steel-plate"}>
+          {additionalImages?.length ? (
+            <RepresentativeImages>
+              <div><LoadingImage src={representativeImage} alt={`${title} 대표사진`} /></div>
+              {additionalImages.map((image, index) => (
+                <div key={image}>
+                  <LoadingImage src={image} alt={`${title} 추가 사진 ${index + 1}`} />
+                </div>
+              ))}
+            </RepresentativeImages>
+          ) : (
+            <LoadingImage src={representativeImage} alt={`${title} 대표사진`} />
+          )}
           <figcaption>{title} 대표사진</figcaption>
         </DimensionDetailRepresentative>
         <DimensionDetailSections>

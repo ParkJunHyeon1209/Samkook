@@ -74,15 +74,6 @@ const DimensionTableCard = styled(Link, { target: "dimension-table-card" })`
 
   cursor: pointer;
 
-  & img {
-    width: 100%;
-    height: 330px;
-    grid-column: 1 / -1;
-    object-fit: contain;
-    background: #fff;
-    border-bottom: 1px solid #e6eaee;
-  }
-
   & strong {
     padding-left: 18px;
     font-size: 18px;
@@ -93,6 +84,32 @@ const DimensionTableCard = styled(Link, { target: "dimension-table-card" })`
     color: #1768e5;
     font-size: 13px;
     font-weight: 700;
+  }
+`;
+
+const DimensionCardPhotos = styled("div")`
+  grid-column: 1 / -1;
+  height: 330px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  border-bottom: 1px solid #e6eaee;
+
+  &[data-inset="true"] {
+    padding: clamp(20px, 4vw, 40px);
+    gap: 12px;
+  }
+`;
+
+const DimensionCardPhoto = styled("div")`
+  position: relative;
+  min-height: 0;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 
@@ -112,7 +129,16 @@ export default function DimensionTableGallery({ groups }) {
                 key={table.slug}
                 to={group.slug === "accessories" ? `/products/${group.slug}/${table.slug}` : `/products/${group.slug}`}
               >
-                <LoadingImage src={table.representativeImage ?? getProductCategory(group.slug).image} alt={table.title} />
+                <DimensionCardPhotos data-inset={Boolean(table.additionalImages?.length || table.slug === "steel-plate")}>
+                  <DimensionCardPhoto>
+                    <LoadingImage src={table.representativeImage ?? getProductCategory(group.slug).image} alt="" />
+                  </DimensionCardPhoto>
+                  {table.additionalImages?.map((image) => (
+                    <DimensionCardPhoto key={image}>
+                      <LoadingImage src={image} alt="" />
+                    </DimensionCardPhoto>
+                  ))}
+                </DimensionCardPhotos>
                 <strong>{table.title}</strong>
                 <span>자세히 보기 →</span>
               </DimensionTableCard>

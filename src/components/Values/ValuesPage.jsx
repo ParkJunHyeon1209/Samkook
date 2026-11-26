@@ -167,16 +167,6 @@ const ValueItemIcon = styled("svg", { target: "value-item__icon" })`
 
 const ValueItemCopy = styled("div", { target: "value-item__copy" })``;
 
-// const ValueItemNumber = styled("span", { target: "value-item__number" })`
-//   display: block;
-
-//   font-size: 12px;
-
-//   letter-spacing: 2px;
-
-//   color: #96a5bb;
-// `;
-
 const ValueItemEnglish = styled("span", { target: "value-item__english" })`
   color: #5974a1;
 
@@ -270,7 +260,6 @@ export default function ValuesPage() {
                 <image href={valueIcons} width="1774" height="887" />
               </ValueItemIcon>
               <ValueItemCopy>
-                {/* <ValueItemNumber>0{index + 1}</ValueItemNumber> */}
                 <h2>{value.title}</h2>
                 <ValueItemEnglish>{value.english}</ValueItemEnglish>
                 <p>{value.description}</p>

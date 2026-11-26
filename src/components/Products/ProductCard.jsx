@@ -171,14 +171,12 @@ const ProductImageModalContent = styled("div", { target: "product-image-modal__c
 
   box-shadow: 0 25px 80px rgba(0, 0, 0, .45);
 
-  &>img {
-    width: 100%;
-    min-height: 0;
-    flex: 1;
-    object-fit: cover;
+  & > footer {
+    flex-shrink: 0;
+    color: #fff;
   }
 
-  &>div {
+  & > footer > div {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -186,23 +184,38 @@ const ProductImageModalContent = styled("div", { target: "product-image-modal__c
     color: #fff;
   }
 
-  &>div span {
+  & > footer span {
     color: #68a5ff;
     font-size: 14px;
     font-weight: 800;
   }
 
-  &>div strong {
+  & > footer strong {
     font-size: 20px;
   }
 
-  &>.product-image-modal__navigation {
+  & > footer > .product-image-modal__navigation {
     justify-content: center;
     padding-top: 0;
   }
 
   @media (max-width: 680px) {
     width: 90vw;
+  }
+`;
+
+const ProductImageModalFrame = styled("div")`
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: clamp(16px, 3vmin, 32px);
+
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
 `;
 
@@ -304,17 +317,19 @@ export default function ProductCard({ name, title, specification, image, images,
             >
               ×
             </ProductImageModalClose>
-            <LoadingImage src={photos[imageIndex]} alt={`${name}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
-            <div>
-              <strong>{name}</strong>
-            </div>
-            {photos.length > 1 && (
-              <ProductImageModalNavigation>
-                <button type="button" aria-label="이전 사진" onClick={() => setImageIndex((index) => (index - 1 + photos.length) % photos.length)}>← 이전</button>
-                <span aria-live="polite">{imageIndex + 1} / {photos.length}</span>
-                <button type="button" aria-label="다음 사진" onClick={() => setImageIndex((index) => (index + 1) % photos.length)}>다음 →</button>
-              </ProductImageModalNavigation>
-            )}
+            <ProductImageModalFrame>
+              <LoadingImage src={photos[imageIndex]} alt={`${name}${photos.length > 1 ? ` 사진 ${imageIndex + 1}` : ""}`} />
+            </ProductImageModalFrame>
+            <footer>
+              <div><strong>{name}</strong></div>
+              {photos.length > 1 && (
+                <ProductImageModalNavigation>
+                  <button type="button" aria-label="이전 사진" onClick={() => setImageIndex((index) => (index - 1 + photos.length) % photos.length)}>← 이전</button>
+                  <span aria-live="polite">{imageIndex + 1} / {photos.length}</span>
+                  <button type="button" aria-label="다음 사진" onClick={() => setImageIndex((index) => (index + 1) % photos.length)}>다음 →</button>
+                </ProductImageModalNavigation>
+              )}
+            </footer>
           </ProductImageModalContent>
         </ProductImageModal>
       )}
