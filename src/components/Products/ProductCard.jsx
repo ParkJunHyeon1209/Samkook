@@ -9,14 +9,6 @@ const ProductCardItem = styled("article", { target: "product-card-item" })`
 
   border: 1px solid #dfe5ea;
 
-  transition: .2s;
-
-  &:hover {
-    transform: translateY(-4px);
-    border-color: #1768e5;
-    box-shadow: 0 12px 30px rgba(0, 35, 70, .09);
-  }
-
   &>button {
     width: 100%;
     padding: 0;
@@ -29,10 +21,6 @@ const ProductCardItem = styled("article", { target: "product-card-item" })`
   & > button:disabled {
     color: inherit;
     cursor: default;
-  }
-
-  &:hover img {
-    transform: scale(1.06);
   }
 
   &:hover .product-card-item__image span,
@@ -258,8 +246,11 @@ const ProductImageModalNavigation = styled("div", { target: "product-image-modal
     cursor: pointer;
   }
 
-  & button:hover {
-    background: #1768e5;
+  @media (hover: hover) {
+    & button:hover {
+      background: #1c4263;
+      color: #dcecff;
+    }
   }
 `;
 
@@ -324,9 +315,9 @@ export default function ProductCard({ name, title, specification, image, images,
               <div><strong>{name}</strong></div>
               {photos.length > 1 && (
                 <ProductImageModalNavigation>
-                  <button type="button" aria-label="이전 사진" onClick={() => setImageIndex((index) => (index - 1 + photos.length) % photos.length)}>← 이전</button>
+                  <button type="button" data-step-button aria-label="이전 사진" onClick={() => setImageIndex((index) => (index - 1 + photos.length) % photos.length)}>← 이전</button>
                   <span aria-live="polite">{imageIndex + 1} / {photos.length}</span>
-                  <button type="button" aria-label="다음 사진" onClick={() => setImageIndex((index) => (index + 1) % photos.length)}>다음 →</button>
+                  <button type="button" data-step-button aria-label="다음 사진" onClick={() => setImageIndex((index) => (index + 1) % photos.length)}>다음 →</button>
                 </ProductImageModalNavigation>
               )}
             </footer>

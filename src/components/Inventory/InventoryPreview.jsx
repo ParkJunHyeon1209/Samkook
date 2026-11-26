@@ -87,14 +87,6 @@ const ProductCardItem = styled("article", { target: "product-card-item" })`
 
   border: 1px solid #dfe5ea;
 
-  transition: .2s;
-
-  &:hover {
-    transform: translateY(-4px);
-    border-color: #1768e5;
-    box-shadow: 0 12px 30px rgba(0, 35, 70, .09);
-  }
-
   &>button {
     width: 100%;
     padding: 0;
@@ -107,10 +99,6 @@ const ProductCardItem = styled("article", { target: "product-card-item" })`
   & > button:disabled {
     color: inherit;
     cursor: default;
-  }
-
-  &:hover img {
-    transform: scale(1.06);
   }
 
   &:hover .product-card-item__image span,

@@ -371,19 +371,15 @@ const ProductsViewAll = styled(Link, { target: "products-view-all" })`
 `;
 
 const ProductCardElement = styled(Link, { target: "product-card" })`
-  &:hover img {
-    transform: scale(1.05);
-  }
-
+  width: 88.4%;
+  margin: 3.375% auto 0;
   text-align: center;
 
   & img {
     display: block;
-    width: 100%;
+    width: calc(100% / 0.884);
     height: auto;
-    object-fit: contain;
-    clip-path: inset(4.5% 5.8%);
-    transition: 0.4s;
+    flex-shrink: 0;
   }
 
   & h3 {
@@ -410,15 +406,11 @@ const ImageWrap = styled("div", { target: "image-wrap" })`
 
   align-items: center;
 
-  aspect-ratio: 4 / 3;
+  justify-content: center;
+
+  aspect-ratio: 2121.6 / 1638;
 
   overflow: hidden;
-
-  background: #fff;
-
-  @media (max-width: 680px) {
-    aspect-ratio: 1;
-  }
 `;
 
 const CardMore = styled("span", { target: "card-more" })`

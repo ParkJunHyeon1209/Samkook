@@ -167,6 +167,13 @@ const HeroSliderArrow = styled("button", { target: "hero-slider__arrow hero-slid
 
   background: rgb(0 18 37 / 12%);
 
+  @media (hover: hover) {
+    &:hover {
+      background: rgb(0 18 37 / 28%);
+      color: #dcecff;
+    }
+  }
+
   color: white;
 
   font-size: 42px;
@@ -228,6 +235,13 @@ const HeroSliderArrowElement = styled("button", { target: "hero-slider__arrow he
   border: 1px solid rgb(255 255 255 / 30%);
 
   background: rgb(0 18 37 / 12%);
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgb(0 18 37 / 28%);
+      color: #dcecff;
+    }
+  }
 
   color: white;
 
@@ -435,6 +449,7 @@ export default function HeroSlider({ children }) {
       <HeroSliderArrow
 
         type="button"
+        data-step-button
         onClick={() => move(-1)}
         aria-label="이전 슬라이드"
       >
@@ -443,6 +458,7 @@ export default function HeroSlider({ children }) {
       <HeroSliderArrowElement
 
         type="button"
+        data-step-button
         onClick={() => move(1)}
         aria-label="다음 슬라이드"
       >

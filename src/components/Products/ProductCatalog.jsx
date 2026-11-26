@@ -80,12 +80,6 @@ const DimensionNav = styled("nav", { target: "dimension-nav" })`
     border: 1px solid #dbe2e8;
   }
 
-  & a:hover {
-    color: #fff;
-    background: #1768e5;
-    border-color: #1768e5;
-  }
-
   @media (max-width: 680px) {
     overflow-x: auto;
 

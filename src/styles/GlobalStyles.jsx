@@ -30,6 +30,8 @@ const globalStyles = css`
 
   :root {
     --blue: #1768e5;
+    --hover-shadow: 0 18px 24px -16px rgb(0 0 0 / 48%);
+    --hover-lift: -4px;
   }
 
   * {
@@ -55,8 +57,38 @@ const globalStyles = css`
   }
 
   a {
+    display: inline-block;
     color: inherit;
     text-decoration: none;
+  }
+
+  article > a[href] {
+    display: block;
+  }
+
+  :is(a[href], button:enabled),
+  article:has(> :is(a[href], button:enabled)) {
+    transition: translate 220ms ease, box-shadow 220ms ease,
+      background-color 220ms ease, color 220ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --hover-lift: 0px;
+    }
+  }
+
+  @media (hover: hover) {
+    main a[href]:hover:has(> div img):not(article > *, header *, footer *, nav *),
+    article:has(> :is(a[href], button:enabled):hover) {
+      box-shadow: var(--hover-shadow);
+      translate: 0 var(--hover-lift);
+    }
+
+    :is(nav:not(header nav) a[href], button:enabled):hover:not(article > *, [data-step-button]) {
+      color: #fff;
+      background-color: #234767;
+    }
   }
 
   button,
