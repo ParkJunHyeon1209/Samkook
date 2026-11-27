@@ -379,9 +379,6 @@ const slides = [
 
 export default function HeroSlider({ children }) {
   const [active, setActive] = useState(0);
-  const [paused] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
   const [interacting, setInteracting] = useState(false);
   const [visible, setVisible] = useState(() => !document.hidden);
 
@@ -399,13 +396,13 @@ export default function HeroSlider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (paused || interacting || !visible) return;
-    const timer = window.setInterval(
+    if (interacting || !visible) return;
+    const timer = window.setTimeout(
       () => setActive((index) => (index + 1) % slides.length),
       3500,
     );
-    return () => window.clearInterval(timer);
-  }, [paused, interacting, visible, active]);
+    return () => window.clearTimeout(timer);
+  }, [interacting, visible, active]);
 
   const move = (direction) =>
     setActive((index) => (index + direction + slides.length) % slides.length);
